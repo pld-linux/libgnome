@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.3.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
@@ -94,12 +94,10 @@ rm -f missing acinclude.m4
 
 %install
 rm -rf $RPM_BUILD_ROOT
-GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	pkgconfigdir=%{_pkgconfigdir} \
-	HTML_DIR=%{_gtkdocdir}
+	HTML_DIR=%{_gtkdocdir} \
+	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 # no static modules
 rm -f $RPM_BUILD_ROOT%{_libdir}/{gnome-vfs-2.0/modules,bonobo/monikers}/*.a
