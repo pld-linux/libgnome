@@ -5,17 +5,17 @@ Version:	2.0.3
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnome/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/2.0.1/sources/libgnome/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am.patch
 URL:		ftp://www.gnome.org/
 BuildRequires:	audiofile-devel >= 0.2.3
-BuildRequires:	esound-devel >= 0.2.28
+BuildRequires:	esound-devel >= 0.2.29
 BuildRequires:	GConf2-devel >= 1.2.1
 BuildRequires:	gtk-doc
-BuildRequires:	gnome-vfs2-devel >= 2.0.2
+BuildRequires:	gnome-vfs2-devel >= 2.0.3
 BuildRequires:	libbonobo-devel >= 2.0.0
-BuildRequires:	libxml2-devel >= 2.4.23
-BuildRequires:	libxslt-devel
+BuildRequires:	libxml2-devel >= 2.4.24
+BuildRequires:	libxslt-devel >= 1.0.20
 BuildRequires:	openssl-devel
 PreReq:		GConf2
 PreReq:		/sbin/ldconfig
