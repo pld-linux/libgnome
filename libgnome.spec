@@ -1,18 +1,18 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	1.117.0
-Release:	1
+Version:	1.117.1
+Release:	0.1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnome/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am.patch
 URL:		ftp://www.gnome.org/
-BuildRequires:	GConf2-devel >= 1.1.9
+BuildRequires:	GConf2-devel >= 1.1.10
 BuildRequires:	audiofile-devel >= 0.2.3
 BuildRequires:	esound-devel >= 0.2.25
 BuildRequires:	gnome-vfs2-devel >= 1.9.13
-BuildRequires:	libbonobo-devel
+BuildRequires:	libbonobo-devel >= 1.117.0
 BuildRequires:	libxml2-devel >= 2.4.20
 BuildRequires:	libxslt-devel
 PreReq:		GConf2
@@ -83,10 +83,10 @@ Statyczna wersja bibliotek libgnome.
 
 %build
 rm -f missing acinclude.m4
-libtoolize --copy --force
-aclocal
-autoconf
-automake -a -c -f
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure \
 	--enable-gtk-doc=no
 
@@ -100,8 +100,6 @@ export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 	DESTDIR=$RPM_BUILD_ROOT \
 	pkgconfigdir=%{_pkgconfigdir}
 
-gzip -9nf AUTHORS ChangeLog NEWS README
-
 %find_lang %{name} --with-gnome --all-name
 
 %clean
@@ -109,14 +107,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
-GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`; export GCONF_CONFIG_SOURCE
-gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null
+GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null
 
 %postun	-p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS ChangeLog NEWS README
 %{_sysconfdir}/gconf/schemas/*
 %{_sysconfdir}/gnome-vfs-2.0/modules/*
 %{_sysconfdir}/sound/events/*
@@ -125,6 +122,7 @@ gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /de
 %attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/*.??
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.??
 %{_libdir}/bonobo/servers/*
+%{_datadir}/sgml/docbook/*
 
 %files devel
 %defattr(644,root,root,755)
