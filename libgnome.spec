@@ -1,21 +1,20 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.6.1.1
+Version:	2.7.1
 Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	8fb8d073987cb4c5d9bfe577550d11c2
-Patch0:		%{name}-am.patch
-Patch1:		%{name}-locale-names.patch
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.7/%{name}-%{version}.tar.bz2
+# Source0-md5:	b445fd06ea81752de31e6f7a39fe84b5
+Patch0:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.6.1
+BuildRequires:	GConf2-devel >= 2.7.1
 BuildRequires:	audiofile-devel >= 1:0.2.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 1:0.2.31
-BuildRequires:	gnome-vfs2-devel >= 2.6.1.1
+BuildRequires:	gnome-vfs2-devel >= 2.7.1
 BuildRequires:	gtk-doc >= 0.6
 BuildRequires:	intltool >= 0.29
 BuildRequires:	libbonobo-devel >= 2.6.0
@@ -25,7 +24,7 @@ BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpm-build >= 4.1-10
 Requires(post):	GConf2 >= 2.6.1
 Requires(post):	/sbin/ldconfig
-Requires:	gnome-vfs2 >= 2.6.1.1
+Requires:	gnome-vfs2 >= 2.7.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -79,7 +78,6 @@ Statyczna wersja bibliotek libgnome.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 mv po/{no,nb}.po
 
