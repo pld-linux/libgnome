@@ -20,7 +20,7 @@ BuildRequires:	libbonobo-devel >= 2.3.6
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.5.10
 BuildRequires:	libxslt-devel >= 1.0.32
-BuildRequires:	openssl-devel >= 0.9.7
+BuildRequires:	openssl-devel >= 0.9.7c
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	intltool >= 0.27.2
 Requires(post):	GConf2 >= 2.3.3
