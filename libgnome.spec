@@ -1,30 +1,31 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.8.0
-Release:	3
+Version:	2.9.1
+Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	dab4ecbfa7ec1a2f22d2a48b6b83e937
+Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.9/%{name}-%{version}.tar.bz2
+# Source0-md5:	410fe916d3f07366236db6420676a49f
 Patch0:		%{name}-va.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.7.92
+BuildRequires:	GConf2-devel >= 2.9.2
 BuildRequires:	audiofile-devel >= 1:0.2.3
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 1:0.2.31
-BuildRequires:	gnome-vfs2-devel >= 2.8.0
+BuildRequires:	gnome-vfs2-devel >= 2.9.90
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	intltool >= 0.29
 BuildRequires:	libbonobo-devel >= 2.6.2
 BuildRequires:	libtool
 BuildRequires:	perl-base
+BuildRequires:	pkgconfig
 BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpm-build >= 4.1-10
 Requires(post):	/sbin/ldconfig
-Requires(post):	GConf2 >= 2.7.92
-Requires:	gnome-vfs2 >= 2.8.0
+Requires(post):	GConf2 >= 2.9.2
+Requires:	gnome-vfs2 >= 2.9.90
 Obsoletes:	gnome-objc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -47,10 +48,10 @@ Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	GConf2-devel >= 2.7.92
+Requires:	GConf2-devel >= 2.9.2
 Requires:	audiofile-devel >= 1:0.2.3
 Requires:	esound-devel >= 1:0.2.31
-Requires:	gnome-vfs2-devel >= 2.8.0
+Requires:	gnome-vfs2-devel >= 2.9.90
 Requires:	gtk-doc-common
 
 %description devel
