@@ -83,6 +83,7 @@ Statyczna wersja bibliotek libgnome.
 
 %build
 rm -f missing acinclude.m4
+export _POSIX2_VERSION=199209 
 glib-gettextize --force
 intltoolize --force
 %{__libtoolize}
@@ -97,6 +98,7 @@ intltoolize --force
 
 %install
 rm -rf $RPM_BUILD_ROOT
+export _POSIX2_VERSION=199209 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	HTML_DIR=%{_gtkdocdir} \
