@@ -1,12 +1,12 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.5.0
+Version:	2.5.1
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	8895b41928bfb19b8ba2b89fda8fabb2
+# Source0-md5:	1b58479fdb26c52fdbc1a3d633a8a752
 Patch0:		%{name}-am.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.3.3
@@ -14,18 +14,18 @@ BuildRequires:	audiofile-devel >= 0.2.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 0.2.31
-BuildRequires:	gnome-vfs2-devel >= 2.5.2
+BuildRequires:	gnome-vfs2-devel >= 2.5.3
 BuildRequires:	gtk-doc
-BuildRequires:	libbonobo-devel >= 2.3.6
+BuildRequires:	libbonobo-devel >= 2.5.1
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.5.10
 BuildRequires:	libxslt-devel >= 1.0.32
 BuildRequires:	openssl-devel >= 0.9.7c
 BuildRequires:	rpm-build >= 4.1-10
-BuildRequires:	intltool >= 0.27.2
+BuildRequires:	intltool >= 0.28
 Requires(post):	GConf2 >= 2.3.3
 Requires(post):	/sbin/ldconfig
-Requires:	gnome-vfs2 >= 2.3.7
+Requires:	gnome-vfs2 >= 2.5.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -50,7 +50,7 @@ Requires:	%{name} = %{version}
 Requires:	GConf2-devel >= 2.3.3
 Requires:	audiofile-devel >= 0.2.3
 Requires:	esound-devel >= 0.2.31
-Requires:	gnome-vfs2-devel >= 2.3.7
+Requires:	gnome-vfs2-devel >= 2.5.3
 Requires:	gtk-doc-common
 Requires:	libxml2-devel >= 2.5.10
 
@@ -83,6 +83,8 @@ Statyczna wersja bibliotek libgnome.
 
 %build
 rm -f missing acinclude.m4
+glib-gettextize --force
+intltoolize --force
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
