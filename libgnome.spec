@@ -4,7 +4,7 @@ Name:		libgnome
 Version:	2.1.2
 Release:	1
 License:	LGPL
-Group:		X11/Libraries
+Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am.patch
 URL:		http://www.gnome.org/
@@ -46,7 +46,7 @@ Pakiet libgnomeui zawiera biblioteki GNOME zale¿ne od X11.
 %package devel
 Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
-Group:		X11/Development/Libraries
+Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	GConf2-devel >= 1.1.11
 Requires:	audiofile-devel >= 0.2.3
@@ -69,7 +69,7 @@ libgnome.
 %package static
 Summary:	Static libgnome libraries
 Summary(pl):	Statyczne biblioteki libgnome
-Group:		X11/Development/Libraries
+Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
 %description static
