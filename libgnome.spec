@@ -40,10 +40,9 @@ package contains X11-dependent GNOME library features.
 %description -l pl
 GNOME (GNU Network Object Model Environment) jest przyjaznym dla
 u¿ytkownika zbiorem aplikacji i narzêdzi do u¿ywania w po³±czeniu z
-menad¿erem okien pod X Window System. Pakiet libgnome zawiera
-biblioteki nie zwi±zane z graficznym interfejsem potrzebne do
-uruchomienia GNOME. Pakiet libgnomeui zawiera biblioteki GNOME zale¿ne
-od X11.
+zarz±dc± okien pod X Window System. Pakiet libgnome zawiera biblioteki
+nie zwi±zane z graficznym interfejsem potrzebne do uruchomienia GNOME.
+Pakiet libgnomeui zawiera biblioteki GNOME zale¿ne od X11.
 
 %package devel
 Summary:	Headers for libgnome
@@ -63,10 +62,6 @@ GUI applications and desktop tools to be used in conjunction with a
 window manager for the X Window System. The libgnome-devel package
 includes the libraries and include files that you will need to use
 libgnome.
-
-You should install the libgnome-devel package if you would like to
-compile GNOME applications. You do not need to install libgnome-devel
-if you just want to use the GNOME desktop environment.
 
 %description devel -l pl
 Pliki nag³ówkowe potrzebne do kompilowania programów korzystaj±cych z
