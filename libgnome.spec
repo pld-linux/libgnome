@@ -1,7 +1,7 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.1.5
+Version:	2.1.90
 Release:	1
 License:	LGPL
 Group:		Libraries
@@ -13,15 +13,15 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 0.2.29
 BuildRequires:	GConf2-devel >= 1.2.1
-BuildRequires:	gnome-vfs2-devel >= 2.1.3-3
+BuildRequires:	gnome-vfs2-devel >= 2.1.6
 BuildRequires:	gtk-doc
-BuildRequires:	libbonobo-devel >= 2.1.0-3
+BuildRequires:	libbonobo-devel >= 2.1.1
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.4.24
+BuildRequires:	libxml2-devel >= 2.5.0
 BuildRequires:	libxslt-devel >= 1.0.20
 BuildRequires:	openssl-devel
-BuildRequires:	rpm-build >= 4.1-8.2
-Requires:	gnome-vfs2 >= 2.0.4-3
+BuildRequires:	rpm-build >= 4.1-10
+Requires:	gnome-vfs2 >= 2.1.6
 Requires(post):	GConf2
 Requires(post):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
