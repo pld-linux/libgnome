@@ -8,19 +8,16 @@ Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnome/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am.patch
 URL:		ftp://www.gnome.org/
+BuildRequires:	GConf2-devel >= 1.1.9
+BuildRequires:	audiofile-devel >= 0.2.3
+BuildRequires:	esound-devel >= 0.2.25
+BuildRequires:	gnome-vfs2-devel >= 1.9.13
+BuildRequires:	libbonobo-devel
+BuildRequires:	libxml2-devel >=2.4.20
+BuildRequires:	libxslt-devel
 PreReq:		GConf2
 PreReq:		/sbin/ldconfig
 PreReq:		scrollkeeper
-BuildRequires:	GConf2-devel
-BuildRequires:	ORBit2-devel
-BuildRequires:	audiofile-devel
-BuildRequires:	esound-devel
-BuildRequires:	glib2-devel
-BuildRequires:	gnome-vfs2-devel >= 1.9.13
-BuildRequires:	libbonobo-devel
-BuildRequires:	libxml2-devel
-BuildRequires:	libxslt-devel
-BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -47,6 +44,11 @@ Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	GConf2-devel >= 1.1.9
+Requires:	audiofile-devel >= 0.2.3
+Requires:	esound-devel >= 0.2.25
+Requires:	gnome-vfs2-devel >= 1.9.13
+Requires:	libxml2-devel >=2.4.20
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -114,7 +116,7 @@ gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /de
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS.gz ChangeLog.gz NEWS.gz README.gz
+%doc *.gz
 %{_sysconfdir}/gconf/schemas/*
 %{_sysconfdir}/gnome-vfs-2.0/modules/*
 %{_sysconfdir}/sound/events/*
@@ -123,13 +125,11 @@ gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /de
 %attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/*.??
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.??
 %{_libdir}/bonobo/servers/*
-%{_datadir}/sgml/docbook/gnome-customization-0.1
-
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
 %{_includedir}/libgnome-2.0
 
