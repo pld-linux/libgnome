@@ -11,7 +11,7 @@ Patch0:		%{name}-am.patch
 Patch1:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.5.90
-BuildRequires:	audiofile-devel >= 0.2.3
+BuildRequires:	audiofile-devel >= 1:0.2.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 0.2.31
@@ -48,7 +48,7 @@ Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	GConf2-devel >= 2.5.90
-Requires:	audiofile-devel >= 0.2.3
+Requires:	audiofile-devel >= 1:0.2.3
 Requires:	esound-devel >= 0.2.31
 Requires:	gnome-vfs2-devel >= 2.5.90
 Requires:	gtk-doc-common
