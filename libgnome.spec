@@ -1,18 +1,18 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	1.117.2
-Release:	1
+Version:	2.0.0
+Release:	0.1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnome/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am.patch
 URL:		ftp://www.gnome.org/
-BuildRequires:	GConf2-devel >= 1.1.10
+BuildRequires:	GConf2-devel >= 1.1.11
 BuildRequires:	audiofile-devel >= 0.2.3
 BuildRequires:	esound-devel >= 0.2.25
 BuildRequires:	gnome-vfs2-devel >= 1.9.13
-BuildRequires:	libbonobo-devel >= 1.117.0
+BuildRequires:	libbonobo-devel >= 2.0.0
 BuildRequires:	libxml2-devel >= 2.4.20
 BuildRequires:	libxslt-devel
 PreReq:		GConf2
@@ -23,6 +23,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
 %define		_sysconfdir	/etc/X11/GNOME2
+%define		_gtkdocdir	/usr/share/doc/gtk-doc/html
 
 %description
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -44,10 +45,10 @@ Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	GConf2-devel >= 1.1.9
+Requires:	GConf2-devel >= 1.1.11
 Requires:	audiofile-devel >= 0.2.3
 Requires:	esound-devel >= 0.2.25
-Requires:	gnome-vfs2-devel >= 1.9.13
+Requires:	gnome-vfs2-devel >= 1.9.17
 Requires:	libxml2-devel >= 2.4.20
 
 %description devel
@@ -88,7 +89,8 @@ rm -f missing acinclude.m4
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-gtk-doc=no
+	--enable-gtk-doc \
+	--with-html-dir=%{_gtkdocdir}
 
 %{__make}
 
@@ -98,7 +100,8 @@ GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	pkgconfigdir=%{_pkgconfigdir}
+	pkgconfigdir=%{_pkgconfigdir} \
+	HTML_DIR=%{_gtkdocdir}
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -130,7 +133,7 @@ GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
 %{_includedir}/libgnome-2.0
-%doc %{_datadir}/gtk-doc/html/*
+%doc %{_gtkdocdir}/*
 
 %files static
 %defattr(644,root,root,755)
