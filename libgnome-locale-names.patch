@@ -1,12 +1,12 @@
-diff -urN aa/libgnome-2.5.90/configure.in libgnome-2.5.90/configure.in
---- aa/libgnome-2.5.90/configure.in	2004-02-24 11:12:24.000000000 +0100
-+++ libgnome-2.5.90/configure.in	2004-02-24 13:04:05.496201304 +0100
-@@ -54,7 +54,7 @@
+diff -urN libgnome-2.7.91.orig/configure.in libgnome-2.7.91/configure.in
+--- libgnome-2.7.91.orig/configure.in	2004-08-16 21:57:28.936546784 +0200
++++ libgnome-2.7.91/configure.in	2004-08-16 21:57:47.939657872 +0200
+@@ -77,7 +77,7 @@
  AC_SUBST(GETTEXT_PACKAGE)
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [The gettext package])
  
--ALL_LINGUAS="am ar az be bg bn bs ca cs cy da de el en_CA en_GB es et eu fa fi fr ga gl gu he hi hr hu id is it ja ko lt lv mk ml mn ms ne nl nn no pa pl pt pt_BR ro ru sk sl sq sr sr@ije sr@Latn sv ta th tr uk vi wa yi zh_CN zh_TW"
+-ALL_LINGUAS="am ar az be bg bn bs ca cs cy da de el en_CA en_GB es et eu fa fi fr ga gl gu he hi hr hu id is it ja ko lt lv mk ml mn ms nb ne nl nn no pa pl pt pt_BR ro ru sk sl sq sr sr@ije sr@Latn sv ta th tr uk vi wa yi zh_CN zh_TW"
 +ALL_LINGUAS="am ar az be bg bn bs ca cs cy da de el en_CA en_GB es et eu fa fi fr ga gl gu he hi hr hu id is it ja ko lt lv mk ml mn ms nb ne nl nn pa pl pt pt_BR ro ru sk sl sq sr sr@ije sr@Latn sv ta th tr uk vi wa yi zh_CN zh_TW"
  AM_GLIB_GNU_GETTEXT
- gnomelocaledir='${prefix}/${DATADIRNAME}/locale'
- AC_SUBST(gnomelocaledir)
+ AM_GLIB_DEFINE_LOCALEDIR([LIBGNOME_LOCALEDIR])
+ 
