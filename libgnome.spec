@@ -1,20 +1,20 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.0.1
-Release:	2
+Version:	2.0.2
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnome/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am.patch
 URL:		ftp://www.gnome.org/
 BuildRequires:	audiofile-devel >= 0.2.3
-BuildRequires:	esound-devel >= 0.2.25
-BuildRequires:	GConf2-devel >= 1.2.0
+BuildRequires:	esound-devel >= 0.2.28
+BuildRequires:	GConf2-devel >= 1.2.1
 BuildRequires:	gtk-doc
-BuildRequires:	gnome-vfs2-devel >= 2.0.0
+BuildRequires:	gnome-vfs2-devel >= 2.0.2
 BuildRequires:	libbonobo-devel >= 2.0.0
-BuildRequires:	libxml2-devel >= 2.4.20
+BuildRequires:	libxml2-devel >= 2.4.23
 BuildRequires:	libxslt-devel
 BuildRequires:	openssl-devel
 PreReq:		GConf2
@@ -123,7 +123,9 @@ GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/
 %{_sysconfdir}/gconf/schemas/*
 %{_sysconfdir}/gnome-vfs-2.0/modules/*
 %{_sysconfdir}/sound/events/*
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/gnome2-db2html
+%attr(755,root,root) %{_libdir}/gnome2-info2html
+%attr(755,root,root) %{_libdir}/gnome2-man2html
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/*.??
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.??
