@@ -1,31 +1,31 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.4.0
-Release:	2
+Version:	2.6.0
+Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	caec1e12d64b98a2925a4317ac16429f
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.6/%{name}-%{version}.tar.bz2
+# Source0-md5:	c3fd920119581ba1da531222ed69a5e0
 Patch0:		%{name}-am.patch
+Patch1:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.3.3
-BuildRequires:	audiofile-devel >= 0.2.3
+BuildRequires:	GConf2-devel >= 2.5.90
+BuildRequires:	audiofile-devel >= 1:0.2.3
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	esound-devel >= 0.2.31
-BuildRequires:	gnome-vfs2-devel >= 2.3.7
-BuildRequires:	gtk-doc
-BuildRequires:	intltool >= 0.27.2
-BuildRequires:	libbonobo-devel >= 2.3.6
+BuildRequires:	esound-devel >= 1:0.2.31
+BuildRequires:	gnome-vfs2-devel >= 2.5.90
+BuildRequires:	gtk-doc >= 0.6
+BuildRequires:	intltool >= 0.29
+BuildRequires:	libbonobo-devel >= 2.6.0
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.5.10
-BuildRequires:	libxslt-devel >= 1.0.32
-BuildRequires:	openssl-devel >= 0.9.7d
+BuildRequires:	perl-base
+BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpm-build >= 4.1-10
-Requires(post):	GConf2 >= 2.3.3
+Requires(post):	GConf2 >= 2.5.90
 Requires(post):	/sbin/ldconfig
-Requires:	gnome-vfs2 >= 2.3.7
+Requires:	gnome-vfs2 >= 2.5.90
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -46,13 +46,12 @@ Pakiet libgnomeui zawiera biblioteki GNOME zale¿ne od X11.
 Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
-Requires:	GConf2-devel >= 2.3.3
-Requires:	audiofile-devel >= 0.2.3
-Requires:	esound-devel >= 0.2.31
-Requires:	gnome-vfs2-devel >= 2.3.7
+Requires:	%{name} = %{version}-%{release}
+Requires:	GConf2-devel >= 2.5.90
+Requires:	audiofile-devel >= 1:0.2.3
+Requires:	esound-devel >= 1:0.2.31
+Requires:	gnome-vfs2-devel >= 2.5.90
 Requires:	gtk-doc-common
-Requires:	libxml2-devel >= 2.5.10
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -69,7 +68,7 @@ libgnome.
 Summary:	Static libgnome libraries
 Summary(pl):	Statyczne biblioteki libgnome
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of libgnome libraries.
@@ -80,9 +79,15 @@ Statyczna wersja bibliotek libgnome.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+
+mv po/{no,nb}.po
 
 %build
-rm -f acinclude.m4
+rm -f missing acinclude.m4
+export _POSIX2_VERSION=199209 
+glib-gettextize --force
+intltoolize --force
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -95,6 +100,7 @@ rm -f acinclude.m4
 
 %install
 rm -rf $RPM_BUILD_ROOT
+export _POSIX2_VERSION=199209 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	HTML_DIR=%{_gtkdocdir} \
