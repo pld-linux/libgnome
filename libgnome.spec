@@ -133,7 +133,7 @@ GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
+%{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
 %{_includedir}/libgnome-2.0
 %doc %{_gtkdocdir}/*
