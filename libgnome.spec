@@ -1,13 +1,14 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.5.4
+Version:	2.5.90
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	b30ef07c9e6cfe8332f554623259d95b
+# Source0-md5:	89e40823b6428cd579ad1dc49c1384bc
 Patch0:		%{name}-am.patch
+Patch1:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.5.0
 BuildRequires:	audiofile-devel >= 0.2.3
@@ -15,14 +16,13 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 0.2.31
 BuildRequires:	gnome-vfs2-devel >= 2.5.6
-BuildRequires:	gtk-doc
+BuildRequires:	gtk-doc >= 0.6
+BuildRequires:	intltool >= 0.29
 BuildRequires:	libbonobo-devel >= 2.5.4
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.5.10
-BuildRequires:	libxslt-devel >= 1.0.32
-BuildRequires:	openssl-devel >= 0.9.7c
+BuildRequires:	perl-base
+BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpm-build >= 4.1-10
-BuildRequires:	intltool >= 0.29
 Requires(post):	GConf2 >= 2.5.0
 Requires(post):	/sbin/ldconfig
 Requires:	gnome-vfs2 >= 2.5.6
@@ -46,13 +46,12 @@ Pakiet libgnomeui zawiera biblioteki GNOME zale¿ne od X11.
 Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	GConf2-devel >= 2.5.0
 Requires:	audiofile-devel >= 0.2.3
 Requires:	esound-devel >= 0.2.31
 Requires:	gnome-vfs2-devel >= 2.5.6
 Requires:	gtk-doc-common
-Requires:	libxml2-devel >= 2.5.10
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -69,7 +68,7 @@ libgnome.
 Summary:	Static libgnome libraries
 Summary(pl):	Statyczne biblioteki libgnome
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of libgnome libraries.
@@ -80,6 +79,9 @@ Statyczna wersja bibliotek libgnome.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+
+mv po/{no,nb}.po
 
 %build
 rm -f missing acinclude.m4
