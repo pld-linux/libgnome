@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.1.2
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
@@ -20,14 +20,11 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.4.24
 BuildRequires:	libxslt-devel >= 1.0.20
 BuildRequires:	openssl-devel
-BuildRequires:	rpm-build >= 4.1-7
+BuildRequires:	rpm-build >= 4.1-8.2
 Requires:	gnome-vfs2 >= 2.0.4-3
 Requires(post):	GConf2
 Requires(post):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_sysconfdir	/etc/X11/GNOME2
-%define		_gtkdocdir	%{_defaultdocdir}/gtk-doc/html
 
 %description
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
