@@ -1,7 +1,7 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	1.115.0
+Version:	1.116.0
 Release:	0.1
 License:	LGPL
 Group:		X11/Libraries
@@ -10,7 +10,7 @@ Patch0:		%{name}-am.patch
 URL:		ftp://www.gnome.org/
 PreReq:		GConf2
 PreReq:		/sbin/ldconfig
-PreReq:		utempter
+PreReq:		scrollkeeper
 BuildRequires:	GConf2-devel
 BuildRequires:	ORBit2-devel
 BuildRequires:	audiofile-devel
@@ -107,9 +107,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
-GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
-export GCONF_CONFIG_SOURCE
-gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/desktop_gnome_*.schemas > /dev/null
+GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`; export GCONF_CONFIG_SOURCE
+gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null
 
 %postun	-p /sbin/ldconfig
 
