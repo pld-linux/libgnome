@@ -1,13 +1,12 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.9.1
+Version:	2.9.2
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	410fe916d3f07366236db6420676a49f
-Patch0:		%{name}-va.patch
+# Source0-md5:	dc071ed63171ae68c5833d1b55162642
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.9.2
 BuildRequires:	audiofile-devel >= 1:0.2.3
@@ -79,7 +78,6 @@ Statyczna wersja bibliotek libgnome.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export _POSIX2_VERSION=199209 
@@ -93,7 +91,6 @@ intltoolize --force
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
-
 %{__make}
 
 %install
