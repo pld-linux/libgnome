@@ -1,0 +1,12 @@
+diff -Nur libgnome-1.115.0/monikers/Makefile.am libgnome-1.115.0.new/monikers/Makefile.am
+--- libgnome-1.115.0/monikers/Makefile.am	Wed Jan  9 17:35:27 2002
++++ libgnome-1.115.0.new/monikers/Makefile.am	Fri Apr 26 16:44:08 2002
+@@ -7,7 +7,7 @@
+ GNOME_Moniker_std.server.in: GNOME_Moniker_std.server.in.in
+ 	sed -e "s|\@MONIKER_LIBDIR\@|$(monikerdir)|" $< > $@
+ 
+-CLEANFILES+=GNOME_Moniker_std.server GNOME_Moniker_std.server.in
++CLEANFILES = GNOME_Moniker_std.server GNOME_Moniker_std.server.in
+ 
+ serverdir = $(libdir)/bonobo/servers
+ server_DATA = GNOME_Moniker_std.server
