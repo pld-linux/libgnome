@@ -1,0 +1,78 @@
+diff -Nur libgnome-1.114.0/libgnome/gnome-exec.c libgnome-1.114.0.new/libgnome/gnome-exec.c
+--- libgnome-1.114.0/libgnome/gnome-exec.c	Mon Mar 18 13:51:52 2002
++++ libgnome-1.114.0.new/libgnome/gnome-exec.c	Sat Apr 13 15:11:36 2002
+@@ -40,7 +40,7 @@
+ #include <string.h>
+ #include <signal.h>
+ 
+-#include <gconf/gconf-client.h>
++#include <gconf-client.h>
+ 
+ #include <popt.h>
+ 
+diff -Nur libgnome-1.114.0/libgnome/gnome-gconf.c libgnome-1.114.0.new/libgnome/gnome-gconf.c
+--- libgnome-1.114.0/libgnome/gnome-gconf.c	Mon Mar 25 14:07:33 2002
++++ libgnome-1.114.0.new/libgnome/gnome-gconf.c	Sat Apr 13 15:12:31 2002
+@@ -28,8 +28,8 @@
+ #include <stdlib.h>
+ 
+ #define GCONF_ENABLE_INTERNALS
+-#include <gconf/gconf.h>
+-#include <gconf/gconf-client.h>
++#include <gconf.h>
++#include <gconf-client.h>
+ extern struct poptOption gconf_options[];
+ 
+ #include "gnome-i18nP.h"
+diff -Nur libgnome-1.114.0/libgnome/gnome-program.c libgnome-1.114.0.new/libgnome/gnome-program.c
+--- libgnome-1.114.0/libgnome/gnome-program.c	Mon Mar 25 14:07:34 2002
++++ libgnome-1.114.0.new/libgnome/gnome-program.c	Sat Apr 13 15:09:50 2002
+@@ -41,9 +41,9 @@
+ #include <string.h>
+ #include <unistd.h>
+ #include <gmodule.h>
+-#include <gconf/gconf.h>
+-#include <gconf/gconf-value.h>
+-#include <gconf/gconf-client.h>
++#include <gconf.h>
++#include <gconf-value.h>
++#include <gconf-client.h>
+ 
+ #include "gnome-i18nP.h"
+ 
+diff -Nur libgnome-1.114.0/libgnome/gnome-url.c libgnome-1.114.0.new/libgnome/gnome-url.c
+--- libgnome-1.114.0/libgnome/gnome-url.c	Fri Mar 29 23:21:31 2002
++++ libgnome-1.114.0.new/libgnome/gnome-url.c	Sat Apr 13 15:13:17 2002
+@@ -32,7 +32,7 @@
+ 
+ #include "gnome-i18nP.h"
+ 
+-#include <gconf/gconf-client.h>
++#include <gconf-client.h>
+ 
+ #include "gnome-exec.h"
+ #include "gnome-util.h"
+diff -Nur libgnome-1.114.0/monikers/bonobo-config-bag.h libgnome-1.114.0.new/monikers/bonobo-config-bag.h
+--- libgnome-1.114.0/monikers/bonobo-config-bag.h	Tue Jan  8 15:06:45 2002
++++ libgnome-1.114.0.new/monikers/bonobo-config-bag.h	Sat Apr 13 15:14:25 2002
+@@ -10,7 +10,7 @@
+ #ifndef __BONOBO_CONFIG_BAG_H__
+ #define __BONOBO_CONFIG_BAG_H__
+ 
+-#include <gconf/gconf-client.h>
++#include <gconf-client.h>
+ #include <bonobo/bonobo-object.h>
+ #include <bonobo/bonobo-event-source.h>
+ 
+diff -Nur libgnome-1.114.0/monikers/bonobo-moniker-conf-indirect.c libgnome-1.114.0.new/monikers/bonobo-moniker-conf-indirect.c
+--- libgnome-1.114.0/monikers/bonobo-moniker-conf-indirect.c	Thu Dec 20 20:04:38 2001
++++ libgnome-1.114.0.new/monikers/bonobo-moniker-conf-indirect.c	Sat Apr 13 15:14:33 2002
+@@ -12,7 +12,7 @@
+ #include <bonobo/bonobo-main.h>
+ #include <bonobo/bonobo-exception.h>
+ #include <bonobo/bonobo-moniker-util.h>
+-#include <gconf/gconf-client.h>
++#include <gconf-client.h>
+ 
+ #include "bonobo-moniker-extra.h"
+ 
