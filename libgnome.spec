@@ -21,6 +21,7 @@ BuildRequires:	libxml2-devel >= 2.5.1
 BuildRequires:	libxslt-devel >= 1.0.24
 BuildRequires:	openssl-devel >= 0.9.7
 BuildRequires:	rpm-build >= 4.1-10
+BuildRequires:	intltool >= 0.22
 Requires:	gnome-vfs2 >= 2.2.0
 Requires(post):	GConf2 >= 2.3.0
 Requires(post):	/sbin/ldconfig
