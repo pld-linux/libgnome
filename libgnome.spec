@@ -1,31 +1,31 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.5.3
+Version:	2.5.4
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	de591f042d5a0bab36e945922a2df352
+# Source0-md5:	b30ef07c9e6cfe8332f554623259d95b
 Patch0:		%{name}-am.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.3.3
+BuildRequires:	GConf2-devel >= 2.5.0
 BuildRequires:	audiofile-devel >= 0.2.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 0.2.31
-BuildRequires:	gnome-vfs2-devel >= 2.5.3
+BuildRequires:	gnome-vfs2-devel >= 2.5.6
 BuildRequires:	gtk-doc
-BuildRequires:	libbonobo-devel >= 2.5.1
+BuildRequires:	libbonobo-devel >= 2.5.4
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.5.10
 BuildRequires:	libxslt-devel >= 1.0.32
 BuildRequires:	openssl-devel >= 0.9.7c
 BuildRequires:	rpm-build >= 4.1-10
-BuildRequires:	intltool >= 0.28
-Requires(post):	GConf2 >= 2.3.3
+BuildRequires:	intltool >= 0.29
+Requires(post):	GConf2 >= 2.5.0
 Requires(post):	/sbin/ldconfig
-Requires:	gnome-vfs2 >= 2.5.3
+Requires:	gnome-vfs2 >= 2.5.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -47,10 +47,10 @@ Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	GConf2-devel >= 2.3.3
+Requires:	GConf2-devel >= 2.5.0
 Requires:	audiofile-devel >= 0.2.3
 Requires:	esound-devel >= 0.2.31
-Requires:	gnome-vfs2-devel >= 2.5.3
+Requires:	gnome-vfs2-devel >= 2.5.6
 Requires:	gtk-doc-common
 Requires:	libxml2-devel >= 2.5.10
 
