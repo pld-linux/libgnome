@@ -25,7 +25,6 @@ Requires(post):	GConf2
 Requires(post):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
 %define		_sysconfdir	/etc/X11/GNOME2
 %define		_gtkdocdir	%{_defaultdocdir}/gtk-doc/html
