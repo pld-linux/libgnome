@@ -1,0 +1,35 @@
+--- libgnome-2.8.0/libgnome/gnome-program.c.orig	2004-08-25 01:39:18.000000000 +0200
++++ libgnome-2.8.0/libgnome/gnome-program.c	2004-09-16 20:32:18.000000000 +0200
+@@ -1904,6 +1904,23 @@
+ 				      -1, NULL);
+ }
+ 
++static GnomeProgram*
++gnome_program_init_common_wrap_nova (GType type,
++			   const char *app_id, const char *app_version,
++			   const GnomeModuleInfo *module_info,
++			   int argc, char **argv,
++			   const char *first_property_name, 
++			   gint nparams, GParameter *params, ...)
++{
++	va_list va;
++	GnomeProgram *res;
++	va_start(va, params);
++	res = gnome_program_init_common(type, app_id, app_version, module_info,
++				       argc, argv, NULL, va, nparams, params);
++	va_end(va);
++	return res;
++}
++
+ /**
+  * gnome_program_init_paramv:
+  * @type: The type of application to be initialized (usually
+@@ -1928,6 +1945,6 @@
+                            int argc, char **argv,
+                            guint nparams, GParameter *params)
+ {
+-    return gnome_program_init_common (type, app_id, app_version, module_info,
+-				      argc, argv, NULL, 0, nparams, params);
++    return gnome_program_init_common_wrap_nova (type, app_id, app_version, module_info,
++				      argc, argv, NULL, nparams, params);
+ }
