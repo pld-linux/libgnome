@@ -13,7 +13,7 @@ BuildRequires:	audiofile-devel >= 0.2.3
 BuildRequires:	esound-devel >= 0.2.25
 BuildRequires:	gnome-vfs2-devel >= 1.9.13
 BuildRequires:	libbonobo-devel
-BuildRequires:	libxml2-devel >=2.4.20
+BuildRequires:	libxml2-devel >= 2.4.20
 BuildRequires:	libxslt-devel
 PreReq:		GConf2
 PreReq:		/sbin/ldconfig
