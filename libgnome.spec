@@ -121,8 +121,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/gnome2-info2html
 %attr(755,root,root) %{_libdir}/gnome2-man2html
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/*.??
-%attr(755,root,root) %{_libdir}/bonobo/monikers/*.??
+%{_libdir}/gnome-vfs-2.0/modules/*.la
+%attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/*.so
+%{_libdir}/bonobo/monikers/*.la
+%attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
 %{_libdir}/bonobo/servers/*
 %{_datadir}/sgml/docbook/*
 
