@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	1.116.0
-Release:	0.1
+Release:	0.2
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnome/%{name}-%{version}.tar.bz2
@@ -123,13 +123,16 @@ gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /de
 %attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/*.??
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.??
 %{_libdir}/bonobo/servers/*
+%{_datadir}/sgml/docbook/gnome-customization-0.1
+
 
 %files devel
 %defattr(644,root,root,755)
 %{_libdir}/lib*.so
+%{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
 %{_includedir}/libgnome-2.0
-%{_datadir}/gtk-doc
+%{_datadir}/gtk-doc/html/libgnome
 
 %files static
 %defattr(644,root,root,755)
