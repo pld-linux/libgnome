@@ -16,7 +16,7 @@ BuildRequires:	ORBit2-devel
 BuildRequires:	audiofile-devel
 BuildRequires:	esound-devel
 BuildRequires:	glib2-devel
-BuildRequires:	gnome-vfs2-devel
+BuildRequires:	gnome-vfs2-devel >= 1.9.13
 BuildRequires:	libbonobo-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	libxslt-devel
