@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.4.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.4/%{name}-%{version}.tar.bz2
@@ -16,13 +16,13 @@ BuildRequires:	automake
 BuildRequires:	esound-devel >= 0.2.31
 BuildRequires:	gnome-vfs2-devel >= 2.3.7
 BuildRequires:	gtk-doc
+BuildRequires:	intltool >= 0.27.2
 BuildRequires:	libbonobo-devel >= 2.3.6
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.5.10
 BuildRequires:	libxslt-devel >= 1.0.32
 BuildRequires:	openssl-devel >= 0.9.7c
 BuildRequires:	rpm-build >= 4.1-10
-BuildRequires:	intltool >= 0.27.2
 Requires(post):	GConf2 >= 2.3.3
 Requires(post):	/sbin/ldconfig
 Requires:	gnome-vfs2 >= 2.3.7
@@ -82,7 +82,7 @@ Statyczna wersja bibliotek libgnome.
 %patch0 -p1
 
 %build
-rm -f missing acinclude.m4
+rm -f acinclude.m4
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -100,8 +100,8 @@ rm -rf $RPM_BUILD_ROOT
 	HTML_DIR=%{_gtkdocdir} \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
-# no static modules
-rm -f $RPM_BUILD_ROOT%{_libdir}/{gnome-vfs-2.0/modules,bonobo/monikers}/*.a
+# no static modules and *.la for bonobo modules
+rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.{la,a}
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -122,7 +122,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-open
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
-%{_libdir}/bonobo/monikers/*.la
 %{_libdir}/bonobo/servers/*
 
 %files devel
