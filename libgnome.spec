@@ -85,8 +85,8 @@ compile GNOME applications. You do not need to install libgnome-devel
 if you just want to use the GNOME desktop environment.
 
 %description devel -l pl
-Pliki nag³ówkowe potrzebne do kompilowania programów korzystaj±cych
-z libgnome.
+Pliki nag³ówkowe potrzebne do kompilowania programów korzystaj±cych z
+libgnome.
 
 %package static
 Summary:	Static libgnome libraries
