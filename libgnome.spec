@@ -1,26 +1,25 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	1.114.0
-Release:	1
+Version:	1.115.0
+Release:	0.1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnome/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-am.patch
 URL:		ftp://www.gnome.org/
-PreReq:		GConf2 >= 1.1.8
+PreReq:		GConf2
 PreReq:		/sbin/ldconfig
-# Added to avoid the warning messages about utmp group, bug #24171
-# fixme, just libzvt?
 PreReq:		utempter
-BuildRequires:	GConf2-devel >= 1.1.8
-BuildRequires:	ORBit2-devel >= 2.3.106
+BuildRequires:	GConf2-devel
+BuildRequires:	ORBit2-devel
 BuildRequires:	audiofile-devel
 BuildRequires:	esound-devel
-BuildRequires:	glib2-devel >= 1.3.15
-BuildRequires:	gnome-vfs2-devel >= 1.9.7
-BuildRequires:	libbonobo-devel >= 1.112.0
-BuildRequires:	libxml2-devel >= 2.4.14
-BuildRequires:	libxslt-devel >= 1.0.15
+BuildRequires:	glib2-devel
+BuildRequires:	gnome-vfs2-devel
+BuildRequires:	libbonobo-devel
+BuildRequires:	libxml2-devel
+BuildRequires:	libxslt-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -78,13 +77,14 @@ Statyczna wersja bibliotek libgnome.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 rm -f missing acinclude.m4
 libtoolize --copy --force
 aclocal
 autoconf
-#automake -a -c -f
+automake -a -c -f
 %configure \
 	--enable-gtk-doc=no
 
@@ -124,8 +124,6 @@ gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/desktop_gnome_*
 %attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/*.??
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.??
 %{_libdir}/bonobo/servers/*
-# FIXME: where put this?
-#%{_datadir}/sgml
 
 %files devel
 %defattr(644,root,root,755)
