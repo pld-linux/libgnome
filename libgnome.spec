@@ -8,18 +8,13 @@ Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.0/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am.patch
 URL:		ftp://www.gnome.org/
-BuildRequires:	audiofile-devel >= 0.2.3
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	esound-devel >= 0.2.29
-BuildRequires:	GConf2-devel >= 1.2.1
+BuildRequires:	esound-devel
 BuildRequires:	gtk-doc
-BuildRequires:	gnome-vfs2-devel >= 2.0.3
-BuildRequires:	libbonobo-devel >= 2.0.0
+BuildRequires:	gnome-vfs2-devel
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.4.24
-BuildRequires:	libxslt-devel >= 1.0.20
-BuildRequires:	openssl-devel
+BuildRequires:	libxslt-devel
 Requires(post):	GConf2
 Requires(post):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -49,12 +44,10 @@ Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	GConf2-devel >= 1.1.11
-Requires:	audiofile-devel >= 0.2.3
-Requires:	esound-devel >= 0.2.25
-Requires:	gnome-vfs2-devel >= 1.9.17
+Requires:	esound-devel
+Requires:	gnome-vfs2-devel
 Requires:	gtk-doc-common
-Requires:	libxml2-devel >= 2.4.20
+Requires:	libxslt-devel
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -131,15 +124,17 @@ GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/
 %attr(755,root,root) %{_libdir}/gnome2-info2html
 %attr(755,root,root) %{_libdir}/gnome2-man2html
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/*.??
-%attr(755,root,root) %{_libdir}/bonobo/monikers/*.??
+%attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/*.so
+%{_libdir}/gnome-vfs-2.0/modules/*.la
+%attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
+%{_libdir}/bonobo/monikers/*.la
 %{_libdir}/bonobo/servers/*
 %{_datadir}/sgml/docbook/*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
+%{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
 %{_includedir}/libgnome-2.0
 %doc %{_gtkdocdir}/*
