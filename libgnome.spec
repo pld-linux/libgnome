@@ -48,7 +48,7 @@ Requires:	GConf2-devel >= 1.1.9
 Requires:	audiofile-devel >= 0.2.3
 Requires:	esound-devel >= 0.2.25
 Requires:	gnome-vfs2-devel >= 1.9.13
-Requires:	libxml2-devel >=2.4.20
+Requires:	libxml2-devel >= 2.4.20
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
