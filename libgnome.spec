@@ -21,7 +21,7 @@ BuildRequires:	libbonobo-devel >= 2.3.6
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.5.10
 BuildRequires:	libxslt-devel >= 1.0.32
-BuildRequires:	openssl-devel >= 0.9.7c
+BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	rpm-build >= 4.1-10
 Requires(post):	GConf2 >= 2.3.3
 Requires(post):	/sbin/ldconfig
