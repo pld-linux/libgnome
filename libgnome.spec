@@ -1,12 +1,12 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.7.2
+Version:	2.7.91
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	5859c12f23cbc19968ecf495c65a201d
+# Source0-md5:	c984f52e756432423498294292b1a728
 Patch0:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.7.3
@@ -79,7 +79,7 @@ Statyczna wersja bibliotek libgnome.
 %setup -q
 %patch0 -p1
 
-mv po/{no,nb}.po
+rm po/no.po
 
 %build
 rm -f missing acinclude.m4
