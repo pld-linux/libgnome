@@ -1,20 +1,20 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.3.3.1
+Version:	2.3.6
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	7e7abbef0f4088c9df45ddecd5cb6452
+# Source0-md5:	a4afbe112fb6468db0594ea1690eb67a
 Patch0:		%{name}-am.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.3.0
+BuildRequires:	GConf2-devel >= 2.3.3
 BuildRequires:	audiofile-devel >= 0.2.3
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	esound-devel >= 0.2.29
-BuildRequires:	gnome-vfs2-devel >= 2.3.5
+BuildRequires:	esound-devel >= 0.2.31
+BuildRequires:	gnome-vfs2-devel >= 2.3.7
 BuildRequires:	gtk-doc
 BuildRequires:	libbonobo-devel >= 2.2.0
 BuildRequires:	libtool
@@ -23,9 +23,9 @@ BuildRequires:	libxslt-devel >= 1.0.24
 BuildRequires:	openssl-devel >= 0.9.7
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	intltool >= 0.22
-Requires(post):	GConf2 >= 2.3.0
+Requires(post):	GConf2 >= 2.3.3
 Requires(post):	/sbin/ldconfig
-Requires:	gnome-vfs2 >= 2.3.3
+Requires:	gnome-vfs2 >= 2.3.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -118,19 +118,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %{_sysconfdir}/gconf/schemas/*
-%{_sysconfdir}/gnome-vfs-2.0/modules/*
 %{_sysconfdir}/sound
 %attr(755,root,root) %{_bindir}/gnome-open
-%attr(755,root,root) %{_libdir}/gnome2-db2html
-%attr(755,root,root) %{_libdir}/gnome2-info2html
-%attr(755,root,root) %{_libdir}/gnome2-man2html
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/*.so
-%{_libdir}/gnome-vfs-2.0/modules/*.la
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
 %{_libdir}/bonobo/monikers/*.la
 %{_libdir}/bonobo/servers/*
-%{_datadir}/sgml/docbook/*
 
 %files devel
 %defattr(644,root,root,755)
