@@ -1,38 +1,24 @@
-%define glib2_version 1.3.13
-%define libbonobo_version 1.110.0
-%define libxml2_version 2.4.12
-%define libxslt_version 1.0.7
-%define gconf2_version 1.1.6
-%define gnome_vfs2_version 1.9.4.91
-%define orbit2_version 2.3.103
-
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	1.110.0
+Version:	1.114.0
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnome/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-gconf2.patch
 URL:		ftp://www.gnome.org/
-Requires:	glib2 >= %{glib2_version}
-Requires:	libbonobo >= %{libbonobo_version}
-Requires:	gnome-vfs2 >= %{gnome_vfs2_version}
-Requires:	libxml2 >= %{libxml2_version}
-Requires:	ORBit2 >= %{orbit2_version}
-Requires:	libxslt >= %{libxslt_version}
-## prereq for gconftool
-PreReq:		GConf2 >= %{gconf2_version}
+PreReq:		GConf2 >= 1.1.8
 PreReq:		/sbin/ldconfig
 BuildRequires:	zlib-devel
 BuildRequires:	esound-devel
-BuildRequires:	glib2-devel >= %{glib2_version}
-BuildRequires:	libbonobo-devel >= %{libbonobo_version}
-BuildRequires:	GConf2-devel >= %{gconf2_version}
-BuildRequires:	gnome-vfs2-devel >= %{gnome_vfs2_version}
-BuildRequires:	libxml2-devel >= %{libxml2_version}
-BuildRequires:	ORBit2-devel >= %{orbit2_version}
-BuildRequires:	libxslt-devel >= %{libxslt_version}
+BuildRequires:	glib2-devel >= 2.0.1
+BuildRequires:	libbonobo-devel >= 1.113.0
+BuildRequires:	GConf2-devel >= 1.1.8
+BuildRequires:	gnome-vfs2-devel >= 1.9.11
+BuildRequires:	libxml2-devel >= 2.4.19
+BuildRequires:	ORBit2-devel >= 2.3.106
+BuildRequires:	libxslt-devel >= 1.0.15
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # Added to avoid the warning messages about utmp group, bug #24171
@@ -41,6 +27,7 @@ PreReq:		utempter
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
+%define		_sysconfdir	/etc/X11/GNOME2
 
 %description
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -62,16 +49,16 @@ Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-Conflicts:	gnome-libs-devel < 1.4.1.2
-Requires:	zlib-devel
-Requires:	esound-devel
-Requires:	ORBit2-devel >= %{orbit2_version}
-Requires:	glib2-devel >= %{glib2_version}
-Requires:	libbonobo-devel >= %{libbonobo_version}
-Requires:	GConf2-devel >= %{gconf2_version}
-Requires:	gnome-vfs2-devel >= %{gnome_vfs2_version}
-Requires:	libxml2-devel >= %{libxml2_version}
-Requires:	libxslt-devel >= %{libxslt_version}
+#Conflicts:	gnome-libs-devel < 1.4.1.2
+#Requires:	zlib-devel
+#Requires:	esound-devel
+#Requires:	ORBit2-devel >= %{orbit2_version}
+#Requires:	glib2-devel >= %{glib2_version}
+#Requires:	libbonobo-devel >= %{libbonobo_version}
+#Requires:	GConf2-devel >= %{gconf2_version}
+#Requires:	gnome-vfs2-devel >= %{gnome_vfs2_version}
+#Requires:	libxml2-devel >= %{libxml2_version}
+#Requires:	libxslt-devel >= %{libxslt_version}
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -93,7 +80,7 @@ Summary:	Static libgnome libraries
 Summary(pl):	Statyczne biblioteki libgnome
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}
-Conflicts:	gnome-libs-static < 1.4.1.2
+#Conflicts:	gnome-libs-static < 1.4.1.2
 
 %description static
 Static version of libgnome libraries.
@@ -103,21 +90,30 @@ Statyczna wersja bibliotek libgnome.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-%configure
+rm -f missing acinclude.m4
+libtoolize --copy --force
+aclocal
+autoconf
+#automake -a -c -f
+%configure \
+	--enable-gtk-doc=no
+
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
-%makeinstall
-unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	pkgconfigdir=%{_pkgconfigdir}
 
 gzip -9nf AUTHORS ChangeLog NEWS README
 
-%find_lang %{name}
+%find_lang %{name} --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -133,20 +129,26 @@ gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/desktop_gnome_*
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS.gz ChangeLog.gz NEWS.gz README.gz
-%attr(755,root,root) %{_libdir}/lib*.so.*
-%{_libdir}/gnome-vfs-2.0/modules/*
-%attr(755,root,root) %{_bindir}/*
-%{_datadir}/sgml
 %{_sysconfdir}/gconf/schemas/*
 %{_sysconfdir}/gnome-vfs-2.0/modules/*
+%{_sysconfdir}/sound/events/*
+%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/*.??
+%attr(755,root,root) %{_libdir}/bonobo/monikers/*.??
+%{_libdir}/bonobo/servers/*
+# FIXME: where put this?
+#%{_datadir}/sgml
 
 %files devel
 %defattr(644,root,root,755)
 %{_libdir}/lib*.so
-%{_libdir}/pkgconfig/*
-%{_includedir}/*
+%{_pkgconfigdir}/*.pc
+%{_includedir}/libgnome-2.0
 %{_datadir}/gtk-doc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%{_libdir}/gnome-vfs-2.0/modules/*.a
+%{_libdir}/bonobo/monikers/*.a
