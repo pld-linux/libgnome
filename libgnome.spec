@@ -8,11 +8,11 @@ Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am.patch
 URL:		http://www.gnome.org/
+BuildRequires:	GConf2-devel >= 2.3.0
 BuildRequires:	audiofile-devel >= 0.2.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 0.2.29
-BuildRequires:	GConf2-devel >= 2.3.0
 BuildRequires:	gnome-vfs2-devel >= 2.2.0
 BuildRequires:	gtk-doc
 BuildRequires:	libbonobo-devel >= 2.2.0
@@ -22,9 +22,9 @@ BuildRequires:	libxslt-devel >= 1.0.24
 BuildRequires:	openssl-devel >= 0.9.7
 BuildRequires:	rpm-build >= 4.1-10
 BuildRequires:	intltool >= 0.22
-Requires:	gnome-vfs2 >= 2.2.0
 Requires(post):	GConf2 >= 2.3.0
 Requires(post):	/sbin/ldconfig
+Requires:	gnome-vfs2 >= 2.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -101,6 +101,9 @@ export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 	pkgconfigdir=%{_pkgconfigdir} \
 	HTML_DIR=%{_gtkdocdir}
 
+# no static modules
+rm -f $RPM_BUILD_ROOT%{_libdir}/{gnome-vfs-2.0/modules,bonobo/monikers}/*.a
+
 %find_lang %{name} --with-gnome --all-name
 
 %clean
@@ -122,10 +125,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/gnome2-info2html
 %attr(755,root,root) %{_libdir}/gnome2-man2html
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%{_libdir}/gnome-vfs-2.0/modules/*.la
 %attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/*.so
-%{_libdir}/bonobo/monikers/*.la
+%{_libdir}/gnome-vfs-2.0/modules/*.la
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
+%{_libdir}/bonobo/monikers/*.la
 %{_libdir}/bonobo/servers/*
 %{_datadir}/sgml/docbook/*
 
@@ -140,5 +143,3 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-%{_libdir}/gnome-vfs-2.0/modules/*.a
-%{_libdir}/bonobo/monikers/*.a
