@@ -1,13 +1,12 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.8.0
-Release:	3
+Version:	2.8.1
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	dab4ecbfa7ec1a2f22d2a48b6b83e937
-Patch0:		%{name}-va.patch
+# Source0-md5:	17577198f5086c48f69c361be2f4806c
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.7.92
 BuildRequires:	audiofile-devel >= 1:0.2.3
@@ -20,6 +19,7 @@ BuildRequires:	intltool >= 0.29
 BuildRequires:	libbonobo-devel >= 2.6.2
 BuildRequires:	libtool
 BuildRequires:	perl-base
+BuildRequires:	pkgconfig
 BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpm-build >= 4.1-10
 Requires(post):	/sbin/ldconfig
@@ -78,7 +78,6 @@ Statyczna wersja bibliotek libgnome.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export _POSIX2_VERSION=199209 
@@ -92,7 +91,6 @@ intltoolize --force
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
-
 %{__make}
 
 %install
@@ -135,7 +133,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
 %{_includedir}/libgnome-2.0
-%doc %{_gtkdocdir}/*
+%{_gtkdocdir}/%{name}
 
 %files static
 %defattr(644,root,root,755)
