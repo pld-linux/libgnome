@@ -2,11 +2,12 @@ Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.8.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.8/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.8/%{name}-%{version}.tar.bz2
 # Source0-md5:	dab4ecbfa7ec1a2f22d2a48b6b83e937
+Patch0:		%{name}-va.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.7.92
 BuildRequires:	audiofile-devel >= 1:0.2.3
@@ -76,15 +77,16 @@ Statyczna wersja bibliotek libgnome.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-rm -f missing acinclude.m4
 export _POSIX2_VERSION=199209 
 glib-gettextize --force
 intltoolize --force
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--enable-gtk-doc \
