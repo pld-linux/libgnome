@@ -1,12 +1,12 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.3.6
+Version:	2.3.7
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	a4afbe112fb6468db0594ea1690eb67a
+# Source0-md5:	73bcab581efe52b6eab9153e46b5b680
 Patch0:		%{name}-am.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.3.3
@@ -16,13 +16,13 @@ BuildRequires:	automake
 BuildRequires:	esound-devel >= 0.2.31
 BuildRequires:	gnome-vfs2-devel >= 2.3.7
 BuildRequires:	gtk-doc
-BuildRequires:	libbonobo-devel >= 2.2.0
+BuildRequires:	libbonobo-devel >= 2.3.6
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.5.1
-BuildRequires:	libxslt-devel >= 1.0.24
+BuildRequires:	libxml2-devel >= 2.5.10
+BuildRequires:	libxslt-devel >= 1.0.32
 BuildRequires:	openssl-devel >= 0.9.7
 BuildRequires:	rpm-build >= 4.1-10
-BuildRequires:	intltool >= 0.22
+BuildRequires:	intltool >= 0.27.2
 Requires(post):	GConf2 >= 2.3.3
 Requires(post):	/sbin/ldconfig
 Requires:	gnome-vfs2 >= 2.3.7
@@ -47,12 +47,12 @@ Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	GConf2-devel >= 1.1.11
+Requires:	GConf2-devel >= 2.3.3
 Requires:	audiofile-devel >= 0.2.3
-Requires:	esound-devel >= 0.2.25
-Requires:	gnome-vfs2-devel >= 1.9.17
+Requires:	esound-devel >= 0.2.31
+Requires:	gnome-vfs2-devel >= 2.3.7
 Requires:	gtk-doc-common
-Requires:	libxml2-devel >= 2.4.20
+Requires:	libxml2-devel >= 2.5.10
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
