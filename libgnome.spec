@@ -1,31 +1,29 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.6.1.1
-Release:	2
+Version:	2.8.0
+Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	8fb8d073987cb4c5d9bfe577550d11c2
-Patch0:		%{name}-am.patch
-Patch1:		%{name}-locale-names.patch
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	dab4ecbfa7ec1a2f22d2a48b6b83e937
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.6.1
+BuildRequires:	GConf2-devel >= 2.7.92
 BuildRequires:	audiofile-devel >= 1:0.2.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 1:0.2.31
-BuildRequires:	gnome-vfs2-devel >= 2.6.1.1
-BuildRequires:	gtk-doc >= 0.6
+BuildRequires:	gnome-vfs2-devel >= 2.8.0
+BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	intltool >= 0.29
-BuildRequires:	libbonobo-devel >= 2.6.0
+BuildRequires:	libbonobo-devel >= 2.6.2
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpm-build >= 4.1-10
-Requires(post):	GConf2 >= 2.6.1
 Requires(post):	/sbin/ldconfig
-Requires:	gnome-vfs2 >= 2.6.1.1
+Requires(post):	GConf2 >= 2.7.92
+Requires:	gnome-vfs2 >= 2.8.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -47,10 +45,10 @@ Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	GConf2-devel >= 2.6.1
+Requires:	GConf2-devel >= 2.7.92
 Requires:	audiofile-devel >= 1:0.2.3
 Requires:	esound-devel >= 1:0.2.31
-Requires:	gnome-vfs2-devel >= 2.6.1.1
+Requires:	gnome-vfs2-devel >= 2.8.0
 Requires:	gtk-doc-common
 
 %description devel
@@ -78,10 +76,6 @@ Statyczna wersja bibliotek libgnome.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-
-mv po/{no,nb}.po
 
 %build
 rm -f missing acinclude.m4
@@ -108,6 +102,8 @@ export _POSIX2_VERSION=199209
 
 # no static modules and *.la for bonobo modules
 rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.{la,a}
+
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome --all-name
 
