@@ -1,12 +1,12 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.5.91
+Version:	2.5.92
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	c451b6bcd28c6c38425bf9be564fdd1b
+# Source0-md5:	1e7a173533a9a4ce2c325ef6c332101a
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
@@ -23,7 +23,7 @@ BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpm-build >= 4.1-10
-Requires(post):	GConf2 >= 2.5.0
+Requires(post):	GConf2 >= 2.5.90
 Requires(post):	/sbin/ldconfig
 Requires:	gnome-vfs2 >= 2.5.90
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
