@@ -15,14 +15,14 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 1:0.2.31
 BuildRequires:	gnome-vfs2-devel >= 2.7.1
-BuildRequires:	gtk-doc >= 0.6
+BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	intltool >= 0.29
 BuildRequires:	libbonobo-devel >= 2.6.0
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpm-build >= 4.1-10
-Requires(post):	GConf2 >= 2.6.1
+Requires(post):	GConf2 >= 2.7.1
 Requires(post):	/sbin/ldconfig
 Requires:	gnome-vfs2 >= 2.7.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -46,10 +46,10 @@ Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	GConf2-devel >= 2.6.1
+Requires:	GConf2-devel >= 2.7.1
 Requires:	audiofile-devel >= 1:0.2.3
 Requires:	esound-devel >= 1:0.2.31
-Requires:	gnome-vfs2-devel >= 2.6.1.1
+Requires:	gnome-vfs2-devel >= 2.7.1
 Requires:	gtk-doc-common
 
 %description devel
