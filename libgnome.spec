@@ -10,20 +10,20 @@ Patch0:		%{name}-gconf2.patch
 URL:		ftp://www.gnome.org/
 PreReq:		GConf2 >= 1.1.8
 PreReq:		/sbin/ldconfig
-BuildRequires:	zlib-devel
-BuildRequires:	esound-devel
-BuildRequires:	glib2-devel >= 2.0.1
-BuildRequires:	libbonobo-devel >= 1.113.0
-BuildRequires:	GConf2-devel >= 1.1.8
-BuildRequires:	gnome-vfs2-devel >= 1.9.11
-BuildRequires:	libxml2-devel >= 2.4.19
-BuildRequires:	ORBit2-devel >= 2.3.106
-BuildRequires:	libxslt-devel >= 1.0.15
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 # Added to avoid the warning messages about utmp group, bug #24171
 # fixme, just libzvt?
 PreReq:		utempter
+BuildRequires:	GConf2-devel >= 1.1.8
+BuildRequires:	ORBit2-devel >= 2.3.106
+BuildRequires:	audiofile-devel
+BuildRequires:	esound-devel
+BuildRequires:	glib2-devel >= 1.3.15
+BuildRequires:	gnome-vfs2-devel >= 1.9.7
+BuildRequires:	libbonobo-devel >= 1.112.0
+BuildRequires:	libxml2-devel >= 2.4.14
+BuildRequires:	libxslt-devel >= 1.0.15
+BuildRequires:	zlib-devel
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
@@ -49,16 +49,6 @@ Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-#Conflicts:	gnome-libs-devel < 1.4.1.2
-#Requires:	zlib-devel
-#Requires:	esound-devel
-#Requires:	ORBit2-devel >= %{orbit2_version}
-#Requires:	glib2-devel >= %{glib2_version}
-#Requires:	libbonobo-devel >= %{libbonobo_version}
-#Requires:	GConf2-devel >= %{gconf2_version}
-#Requires:	gnome-vfs2-devel >= %{gnome_vfs2_version}
-#Requires:	libxml2-devel >= %{libxml2_version}
-#Requires:	libxslt-devel >= %{libxslt_version}
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -80,7 +70,6 @@ Summary:	Static libgnome libraries
 Summary(pl):	Statyczne biblioteki libgnome
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}
-#Conflicts:	gnome-libs-static < 1.4.1.2
 
 %description static
 Static version of libgnome libraries.
