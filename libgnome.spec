@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.2.0.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.2/%{name}-%{version}.tar.bz2
@@ -116,7 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %{_sysconfdir}/gconf/schemas/*
 %{_sysconfdir}/gnome-vfs-2.0/modules/*
-%{_sysconfdir}/sound/events/*
+%{_sysconfdir}/sound
 %attr(755,root,root) %{_libdir}/gnome2-db2html
 %attr(755,root,root) %{_libdir}/gnome2-info2html
 %attr(755,root,root) %{_libdir}/gnome2-man2html
