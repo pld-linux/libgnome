@@ -1,31 +1,31 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.5.90
+Version:	2.5.91
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	89e40823b6428cd579ad1dc49c1384bc
+# Source0-md5:	c451b6bcd28c6c38425bf9be564fdd1b
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.5.0
+BuildRequires:	GConf2-devel >= 2.5.90
 BuildRequires:	audiofile-devel >= 0.2.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 0.2.31
-BuildRequires:	gnome-vfs2-devel >= 2.5.6
+BuildRequires:	gnome-vfs2-devel >= 2.5.90
 BuildRequires:	gtk-doc >= 0.6
 BuildRequires:	intltool >= 0.29
-BuildRequires:	libbonobo-devel >= 2.5.4
+BuildRequires:	libbonobo-devel >= 2.6.0
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpm-build >= 4.1-10
 Requires(post):	GConf2 >= 2.5.0
 Requires(post):	/sbin/ldconfig
-Requires:	gnome-vfs2 >= 2.5.6
+Requires:	gnome-vfs2 >= 2.5.90
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -47,10 +47,10 @@ Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	GConf2-devel >= 2.5.0
+Requires:	GConf2-devel >= 2.5.90
 Requires:	audiofile-devel >= 0.2.3
 Requires:	esound-devel >= 0.2.31
-Requires:	gnome-vfs2-devel >= 2.5.6
+Requires:	gnome-vfs2-devel >= 2.5.90
 Requires:	gtk-doc-common
 
 %description devel
