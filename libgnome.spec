@@ -1,7 +1,7 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	1.117.1
+Version:	1.117.2
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
@@ -130,6 +130,7 @@ GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
 %{_includedir}/libgnome-2.0
+%doc %{_datadir}/gtk-doc/html/*
 
 %files static
 %defattr(644,root,root,755)
