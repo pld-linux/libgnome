@@ -8,10 +8,10 @@ Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnome/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-am.patch
 URL:		ftp://www.gnome.org/
-BuildRequires:	GConf2-devel >= 1.1.11
+BuildRequires:	GConf2-devel >= 1.2.0
 BuildRequires:	audiofile-devel >= 0.2.3
 BuildRequires:	esound-devel >= 0.2.25
-BuildRequires:	gnome-vfs2-devel >= 1.9.13
+BuildRequires:	gnome-vfs2-devel >= 2.0.0
 BuildRequires:	libbonobo-devel >= 2.0.0
 BuildRequires:	libxml2-devel >= 2.4.20
 BuildRequires:	libxslt-devel
