@@ -6,7 +6,6 @@ Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnome/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-gconf2.patch
 URL:		ftp://www.gnome.org/
 PreReq:		GConf2 >= 1.1.8
 PreReq:		/sbin/ldconfig
@@ -79,7 +78,6 @@ Statyczna wersja bibliotek libgnome.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 rm -f missing acinclude.m4
