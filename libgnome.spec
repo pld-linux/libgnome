@@ -13,13 +13,14 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 0.2.29
 BuildRequires:	GConf2-devel >= 1.2.1
-BuildRequires:	gtk-doc
 BuildRequires:	gnome-vfs2-devel >= 2.1.3-3
+BuildRequires:	gtk-doc
 BuildRequires:	libbonobo-devel >= 2.1.0-3
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.4.24
 BuildRequires:	libxslt-devel >= 1.0.20
 BuildRequires:	openssl-devel
+BuildRequires:	rpm-build >= 4.1-7
 Requires:	gnome-vfs2 >= 2.0.4-3
 Requires(post):	GConf2
 Requires(post):	/sbin/ldconfig
