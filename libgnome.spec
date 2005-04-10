@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.10.0
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.10/%{name}-%{version}.tar.bz2
@@ -21,9 +21,9 @@ BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel >= 1.5
-BuildRequires:	rpm-build >= 4.1-10
-Requires(post):	/sbin/ldconfig
-Requires(post):	GConf2 >= 2.10.0
+BuildRequires:	rpmbuild(macros) >= 1.197
+Requires(post,postun):	/sbin/ldconfig
+Requires(post,preun):	GConf2 >= 2.10.0
 Requires:	gnome-vfs2 >= 2.10.0-2
 Obsoletes:	gnome-objc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -81,8 +81,8 @@ Statyczna wersja bibliotek libgnome.
 
 %build
 export _POSIX2_VERSION=199209 
-glib-gettextize --force
-intltoolize --force
+%{__glib_gettextize}
+%{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -112,10 +112,44 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/ldconfig
-%gconf_schema_install
+%ldconfig_post
+%gconf_schema_install 
+%gconf_schema_install desktop_gnome_accessibility_keyboard.schemas
+%gconf_schema_install desktop_gnome_accessibility_startup.schemas
+%gconf_schema_install desktop_gnome_applications_browser.schemas
+%gconf_schema_install desktop_gnome_applications_help_viewer.schemas
+%gconf_schema_install desktop_gnome_applications_terminal.schemas
+%gconf_schema_install desktop_gnome_applications_window_manager.schemas
+%gconf_schema_install desktop_gnome_background.schemas
+%gconf_schema_install desktop_gnome_file_views.schemas
+%gconf_schema_install desktop_gnome_interface.schemas
+%gconf_schema_install desktop_gnome_lockdown.schemas
+%gconf_schema_install desktop_gnome_peripherals_keyboard.schemas
+%gconf_schema_install desktop_gnome_peripherals_mouse.schemas
+%gconf_schema_install desktop_gnome_sound.schemas
+%gconf_schema_install desktop_gnome_thumbnailers.schemas
+%gconf_schema_install desktop_gnome_typing_break.schemas
 
-%postun	-p /sbin/ldconfig
+%preun
+%gconf_schema_uninstall 
+%gconf_schema_uninstall desktop_gnome_accessibility_keyboard.schemas
+%gconf_schema_uninstall desktop_gnome_accessibility_startup.schemas
+%gconf_schema_uninstall desktop_gnome_applications_browser.schemas
+%gconf_schema_uninstall desktop_gnome_applications_help_viewer.schemas
+%gconf_schema_uninstall desktop_gnome_applications_terminal.schemas
+%gconf_schema_uninstall desktop_gnome_applications_window_manager.schemas
+%gconf_schema_uninstall desktop_gnome_background.schemas
+%gconf_schema_uninstall desktop_gnome_file_views.schemas
+%gconf_schema_uninstall desktop_gnome_interface.schemas
+%gconf_schema_uninstall desktop_gnome_lockdown.schemas
+%gconf_schema_uninstall desktop_gnome_peripherals_keyboard.schemas
+%gconf_schema_uninstall desktop_gnome_peripherals_mouse.schemas
+%gconf_schema_uninstall desktop_gnome_sound.schemas
+%gconf_schema_uninstall desktop_gnome_thumbnailers.schemas
+%gconf_schema_uninstall desktop_gnome_typing_break.schemas
+
+%postun
+%ldconfig_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
