@@ -113,7 +113,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %ldconfig_post
-%gconf_schema_install 
 %gconf_schema_install desktop_gnome_accessibility_keyboard.schemas
 %gconf_schema_install desktop_gnome_accessibility_startup.schemas
 %gconf_schema_install desktop_gnome_applications_browser.schemas
@@ -131,7 +130,6 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install desktop_gnome_typing_break.schemas
 
 %preun
-%gconf_schema_uninstall 
 %gconf_schema_uninstall desktop_gnome_accessibility_keyboard.schemas
 %gconf_schema_uninstall desktop_gnome_accessibility_startup.schemas
 %gconf_schema_uninstall desktop_gnome_applications_browser.schemas
