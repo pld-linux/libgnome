@@ -22,7 +22,7 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpmbuild(macros) >= 1.197
-Requires(post,postun):	/sbin/ldconfig
+Requires(post):	/sbin/ldconfig
 Requires(post,preun):	GConf2 >= 2.10.0
 Requires:	gnome-vfs2 >= 2.10.0-2
 Obsoletes:	gnome-objc
