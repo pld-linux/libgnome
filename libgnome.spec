@@ -112,7 +112,7 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%ldconfig_post
+/sbin/ldconfig
 %gconf_schema_install desktop_gnome_accessibility_keyboard.schemas
 %gconf_schema_install desktop_gnome_accessibility_startup.schemas
 %gconf_schema_install desktop_gnome_applications_browser.schemas
@@ -146,8 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_uninstall desktop_gnome_thumbnailers.schemas
 %gconf_schema_uninstall desktop_gnome_typing_break.schemas
 
-%postun
-%ldconfig_postun
+%postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
