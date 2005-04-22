@@ -52,6 +52,7 @@ Requires:	audiofile-devel >= 1:0.2.3
 Requires:	esound-devel >= 1:0.2.31
 Requires:	gnome-vfs2-devel >= 2.10.0-2
 Requires:	gtk-doc-common
+Requires:	popt-devel >= 1.5
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
