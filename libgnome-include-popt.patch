@@ -1,0 +1,10 @@
+--- libgnome-2.10.0/libgnome/gnome-gconf.c~	2004-10-10 17:04:30.000000000 +0200
++++ libgnome-2.10.0/libgnome/gnome-gconf.c	2005-04-29 15:12:05.230269488 +0200
+@@ -30,6 +30,7 @@
+ #define GCONF_ENABLE_INTERNALS
+ #include <gconf/gconf.h>
+ #include <gconf/gconf-client.h>
++#include <popt.h>
+ extern struct poptOption gconf_options[];
+ 
+ #include "gnome-i18nP.h"
