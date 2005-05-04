@@ -14,6 +14,7 @@ BuildRequires:	audiofile-devel >= 1:0.2.3
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 1:0.2.31
+BuildRequires:	gettext-devel
 BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	intltool >= 0.29
