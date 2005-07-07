@@ -1,12 +1,12 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.10.0
-Release:	4
+Version:	2.10.1
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	f8e1225d96126f5139232821a6723d15
+# Source0-md5:	dfb1a9b5fd25da8680a166c83ce0b6a8
 Patch0:		%{name}-include-popt.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.10.0
