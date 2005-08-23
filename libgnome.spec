@@ -157,6 +157,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
 %{_libdir}/bonobo/servers/*
+%{_mandir}/man7/gnome-options*
 %{_sysconfdir}/gconf/schemas/desktop_gnome_accessibility_keyboard.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_accessibility_startup.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_applications_browser.schemas
@@ -173,7 +174,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/desktop_gnome_thumbnailers.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_typing_break.schemas
 %{_sysconfdir}/sound
-%{_mandir}/man7/gnome-options*
 
 %files devel
 %defattr(644,root,root,755)
