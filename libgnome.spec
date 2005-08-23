@@ -1,12 +1,12 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.11.2
+Version:	2.11.3
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.11/%{name}-%{version}.tar.bz2
-# Source0-md5:	9d8c2c3937516d6e6945da884f4b7f39
+# Source0-md5:	26f795d586082417cb5cdcaf7e80563e
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.11.90
 BuildRequires:	audiofile-devel >= 1:0.2.3
@@ -153,20 +153,34 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%{_sysconfdir}/gconf/schemas/*
-%{_sysconfdir}/sound
 %attr(755,root,root) %{_bindir}/gnome-open
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
 %{_libdir}/bonobo/servers/*
+%{_sysconfdir}/gconf/schemas/desktop_gnome_accessibility_keyboard.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_accessibility_startup.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_applications_browser.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_applications_help_viewer.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_applications_terminal.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_applications_window_manager.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_background.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_file_views.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_interface.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_lockdown.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_peripherals_keyboard.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_peripherals_mouse.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_sound.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_thumbnailers.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_typing_break.schemas
+%{_sysconfdir}/sound
 
 %files devel
 %defattr(644,root,root,755)
+%{_gtkdocdir}/%{name}
+%{_includedir}/libgnome-2.0
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
-%{_includedir}/libgnome-2.0
-%{_gtkdocdir}/%{name}
 
 %files static
 %defattr(644,root,root,755)
