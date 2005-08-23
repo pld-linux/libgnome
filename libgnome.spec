@@ -173,6 +173,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/desktop_gnome_thumbnailers.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_typing_break.schemas
 %{_sysconfdir}/sound
+%{_mandir}/man7/gnome-options*
 
 %files devel
 %defattr(644,root,root,755)
