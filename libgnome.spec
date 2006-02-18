@@ -105,6 +105,8 @@ export _POSIX2_VERSION=199209
 # no static modules and *.la for bonobo modules
 rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.{la,a}
 
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+
 %find_lang %{name} --with-gnome --all-name
 
 %clean
