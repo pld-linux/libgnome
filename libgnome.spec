@@ -23,7 +23,6 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpmbuild(macros) >= 1.197
-Requires(post):	/sbin/ldconfig
 Requires(post,preun):	GConf2 >= 2.12.0
 Requires:	gnome-vfs2 >= 2.12.0
 Obsoletes:	gnome-objc
@@ -105,8 +104,6 @@ export _POSIX2_VERSION=199209
 
 # no static modules and *.la for bonobo modules
 rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.{la,a}
-
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome --all-name
 
