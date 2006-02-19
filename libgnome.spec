@@ -17,7 +17,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	gnome-vfs2-devel >= 2.12.0
 BuildRequires:	gtk-doc >= 1.3
 BuildRequires:	intltool >= 0.34.1
-BuildRequires:	libbonobo-devel >= 2.10.1
+BuildRequires:	libbonobo-devel >= 2.13.0
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
