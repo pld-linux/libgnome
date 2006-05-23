@@ -2,13 +2,14 @@ Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.14.1
-Release:	1
+Release:	3
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.14/%{name}-%{version}.tar.bz2
 # Source0-md5:	bf53815df10db62bbf00defd4100b8d8
+Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.12.0
+BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	audiofile-devel >= 1:0.2.3
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
@@ -17,13 +18,13 @@ BuildRequires:	gettext-devel
 BuildRequires:	gnome-vfs2-devel >= 2.14.0
 BuildRequires:	gtk-doc >= 1.3
 BuildRequires:	intltool >= 0.34.1
-BuildRequires:	libbonobo-devel >= 2.13.0
+BuildRequires:	libbonobo-devel >= 2.14.0
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpmbuild(macros) >= 1.197
-Requires(post,preun):	GConf2 >= 2.12.0
+Requires(post,preun):	GConf2 >= 2.14.0
 Requires:	gnome-vfs2-libs >= 2.14.0
 Obsoletes:	gnome-objc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -47,10 +48,10 @@ Summary:	Headers for libgnome
 Summary(pl):	Pliki nag³ówkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	GConf2-devel >= 2.12.0
+Requires:	GConf2-devel >= 2.14.0
 Requires:	audiofile-devel >= 1:0.2.3
 Requires:	esound-devel >= 1:0.2.35
-Requires:	gnome-vfs2-devel >= 2.12.0
+Requires:	gnome-vfs2-devel >= 2.14.0
 Requires:	gtk-doc-common
 Requires:	popt-devel >= 1.5
 
@@ -79,6 +80,7 @@ Statyczna wersja bibliotek libgnome.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export _POSIX2_VERSION=199209
