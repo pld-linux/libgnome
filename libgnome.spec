@@ -2,11 +2,12 @@ Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.14.1
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.14/%{name}-%{version}.tar.bz2
 # Source0-md5:	bf53815df10db62bbf00defd4100b8d8
+Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	audiofile-devel >= 1:0.2.3
@@ -79,6 +80,7 @@ Statyczna wersja bibliotek libgnome.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export _POSIX2_VERSION=199209
