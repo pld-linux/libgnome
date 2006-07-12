@@ -1,0 +1,123 @@
+diff -ur libgnome-2.14.1/libgnome/gnome-config.c libgnome-2.14.1.fix/libgnome/gnome-config.c
+--- libgnome-2.14.1/libgnome/gnome-config.c	2006-01-06 10:07:04.000000000 +0100
++++ libgnome-2.14.1.fix/libgnome/gnome-config.c	2006-05-23 18:56:30.000000000 +0200
+@@ -46,7 +46,6 @@
+ #endif
+ 
+ #define STRSIZE 4096
+-#define overflow (next == &CharBuffer [STRSIZE-1])
+ 
+ enum {
+ 	FirstBrace,
+@@ -311,13 +310,13 @@
+ 	FILE *f;
+ 	int state;
+ 	TSecHeader *SecHeader = NULL;
+-	char CharBuffer [STRSIZE];
+-	char *next = "";		/* Not needed */
++	GString *CharBuffer;
+ 	int c;
+ 
+ 	if ((f = g_fopen (file, "r"))==NULL)
+ 		return NULL;
+ 
++	CharBuffer = g_string_new_len(NULL, STRSIZE);
+ 	state = FirstBrace;
+ 	while ((c = getc_unlocked (f)) != EOF){
+ 		if (c == '\r')		/* Ignore Carriage Return */
+@@ -326,13 +325,12 @@
+ 		switch (state){
+ 			
+ 		case OnSecHeader:
+-			if (c == ']' || overflow){
+-				*next = '\0';
+-				next = CharBuffer;
+-				SecHeader->section_name = g_strdup (CharBuffer);
++			if (c == ']'){
++				SecHeader->section_name = g_strdup (CharBuffer->str);
++				CharBuffer = g_string_truncate(CharBuffer, 0);
+ 				state = IgnoreToEOL;
+ 			} else
+-				*next++ = c;
++				CharBuffer = g_string_append_c(CharBuffer, c);
+ 			break;
+ 
+ 		case IgnoreToEOL:
+@@ -342,7 +340,7 @@
+ 					state = FirstBrace;
+ 				else
+ 					state = KeyDef;
+-				next = CharBuffer;
++				CharBuffer = g_string_truncate(CharBuffer, 0);
+ 			}
+ 			break;
+ 
+@@ -365,7 +363,7 @@
+ 				SecHeader->link = temp;
+ 				SecHeader->keys = NULL;
+ 				state = OnSecHeader;
+-				next = CharBuffer;
++				CharBuffer = g_string_truncate(CharBuffer, 0);
+ 				break;
+ 			}
+ 			/* On first pass, don't allow dangling keys */
+@@ -375,47 +373,45 @@
+ 			if ((c == ' ' && state != KeyDefOnKey) || c == '\t')
+ 				break;
+ 
+-			if (c == '\n' || overflow) { /* Abort Definition */
+-				next = CharBuffer;
++			if (c == '\n') { /* Abort Definition */
++				CharBuffer = g_string_truncate(CharBuffer, 0);
+ 				state = KeyDef;
+                                 break;
+                         }
+ 
+-			if (c == '=' || overflow){
++			if (c == '='){
+ 				TKeys *temp;
+ 
+ 				temp = SecHeader->keys;
+-				*next = '\0';
+ 				SecHeader->keys = (TKeys *) g_malloc (sizeof (TKeys));
+ 				SecHeader->keys->link = temp;
+-				SecHeader->keys->key_name = g_strdup (CharBuffer);
++				SecHeader->keys->key_name = g_strdup (CharBuffer->str);
+ 				state = KeyValue;
+-				next = CharBuffer;
++				CharBuffer = g_string_truncate(CharBuffer, 0);
+ 			} else {
+-				*next++ = c;
++				CharBuffer = g_string_append_c(CharBuffer, c);
+ 				state = KeyDefOnKey;
+ 			}
+ 			break;
+ 
+ 		case KeyValue:
+-			if (overflow || c == '\n'){
+-				*next = '\0';
+-				SecHeader->keys->value = decode_string_and_dup (CharBuffer);
++			if (c == '\n'){
++				SecHeader->keys->value = decode_string_and_dup (CharBuffer->str);
+ 				state = c == '\n' ? KeyDef : IgnoreToEOL;
+-				next = CharBuffer;
++				CharBuffer = g_string_truncate(CharBuffer, 0);
+ #ifdef GNOME_ENABLE_DEBUG
+ #endif
+ 			} else
+-				*next++ = c;
++				CharBuffer = g_string_append_c(CharBuffer, c);
+ 			break;
+ 
+ 		} /* switch */
+ 
+ 	} /* while ((c = getc_unlocked (f)) != EOF) */
+ 	if (c == EOF && state == KeyValue){
+-		*next = '\0';
+-		SecHeader->keys->value = decode_string_and_dup (CharBuffer);
++		SecHeader->keys->value = decode_string_and_dup (CharBuffer->str);
+ 	}
++	g_string_free(CharBuffer, TRUE);
+ 	fclose (f);
+ 	return SecHeader;
+ }
