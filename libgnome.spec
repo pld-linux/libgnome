@@ -7,6 +7,7 @@ License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.15/%{name}-%{version}.tar.bz2
 # Source0-md5:	0f7c63d3cff2832758bd27339c1a9e5e
+Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	audiofile-devel >= 1:0.2.3
@@ -79,6 +80,7 @@ Statyczna wersja bibliotek libgnome.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # to be removed (?)
