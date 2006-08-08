@@ -1,12 +1,12 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.15.1
-Release:	2
+Version:	2.15.2
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.15/%{name}-%{version}.tar.bz2
-# Source0-md5:	0f7c63d3cff2832758bd27339c1a9e5e
+# Source0-md5:	d5c1ddddb347fc9de8d6cb3de185fa6a
 Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.14.0
@@ -15,17 +15,16 @@ BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 1:0.2.35
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-vfs2-devel >= 2.15.3
-BuildRequires:	gtk-doc >= 1.6
+BuildRequires:	gnome-vfs2-devel >= 2.15.91
+BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	intltool >= 0.35.0
-BuildRequires:	libbonobo-devel >= 2.15.0
+BuildRequires:	libbonobo-devel >= 2.15.2
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
-BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2 >= 2.14.0
-Requires:	gnome-vfs2-libs >= 2.15.3
+Requires:	gnome-vfs2-libs >= 2.15.91
 Obsoletes:	gnome-objc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -51,9 +50,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	GConf2-devel >= 2.14.0
 Requires:	audiofile-devel >= 1:0.2.3
 Requires:	esound-devel >= 1:0.2.35
-Requires:	gnome-vfs2-devel >= 2.15.3
-Requires:	gtk-doc-common
-Requires:	popt-devel >= 1.5
+Requires:	gnome-vfs2-devel >= 2.15.91
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -78,6 +75,18 @@ Static version of libgnome libraries.
 %description static -l pl
 Statyczna wersja bibliotek libgnome.
 
+%package apidocs
+Summary:	libgnome API documentation
+Summary(pl):	Dokumentacja API libgnome
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+libgnome API documentation.
+
+%description apidocs -l pl
+Dokumentacja API libgnome.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -93,7 +102,6 @@ Statyczna wersja bibliotek libgnome.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
@@ -179,7 +187,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_gtkdocdir}/%{name}
 %{_includedir}/libgnome-2.0
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
@@ -188,3 +195,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/%{name}
