@@ -1,12 +1,12 @@
 Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.15.2
+Version:	2.16.0
 Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.15/%{name}-%{version}.tar.bz2
-# Source0-md5:	d5c1ddddb347fc9de8d6cb3de185fa6a
+Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.16/%{name}-%{version}.tar.bz2
+# Source0-md5:	b3f030f6c677b0e1bcfca7c7e58d6c4a
 Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.14.0
@@ -15,16 +15,16 @@ BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	esound-devel >= 1:0.2.35
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-vfs2-devel >= 2.15.91
+BuildRequires:	gnome-vfs2-devel >= 2.16.0
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	intltool >= 0.35.0
-BuildRequires:	libbonobo-devel >= 2.15.2
+BuildRequires:	libbonobo-devel >= 2.16.0
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2 >= 2.14.0
-Requires:	gnome-vfs2-libs >= 2.15.91
+Requires:	gnome-vfs2-libs >= 2.16.0
 Obsoletes:	gnome-objc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,7 +50,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	GConf2-devel >= 2.14.0
 Requires:	audiofile-devel >= 1:0.2.3
 Requires:	esound-devel >= 1:0.2.35
-Requires:	gnome-vfs2-devel >= 2.15.91
+Requires:	gnome-vfs2-devel >= 2.16.0
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
