@@ -1,5 +1,5 @@
 Summary:	GNOME base library
-Summary(pl):	Podstawowa biblioteka GNOME
+Summary(pl.UTF-8):   Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.16.0
 Release:	2
@@ -35,16 +35,16 @@ window manager for the X Window System. The libgnome package includes
 non-GUI-related libraries that are needed to run GNOME. The libgnomeui
 package contains X11-dependent GNOME library features.
 
-%description -l pl
+%description -l pl.UTF-8
 GNOME (GNU Network Object Model Environment) jest przyjaznym dla
-u¿ytkownika zbiorem aplikacji i narzêdzi do u¿ywania w po³±czeniu z
-zarz±dc± okien pod X Window System. Pakiet libgnome zawiera biblioteki
-nie zwi±zane z graficznym interfejsem potrzebne do uruchomienia GNOME.
-Pakiet libgnomeui zawiera biblioteki GNOME zale¿ne od X11.
+uÅ¼ytkownika zbiorem aplikacji i narzÄ™dzi do uÅ¼ywania w poÅ‚Ä…czeniu z
+zarzÄ…dcÄ… okien pod X Window System. Pakiet libgnome zawiera biblioteki
+nie zwiÄ…zane z graficznym interfejsem potrzebne do uruchomienia GNOME.
+Pakiet libgnomeui zawiera biblioteki GNOME zaleÅ¼ne od X11.
 
 %package devel
 Summary:	Headers for libgnome
-Summary(pl):	Pliki nag³ówkowe libgnome
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	GConf2-devel >= 2.14.0
@@ -59,32 +59,32 @@ window manager for the X Window System. The libgnome-devel package
 includes the libraries and include files that you will need to use
 libgnome.
 
-%description devel -l pl
-Pliki nag³ówkowe potrzebne do kompilowania programów korzystaj±cych z
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe potrzebne do kompilowania programÃ³w korzystajÄ…cych z
 libgnome.
 
 %package static
 Summary:	Static libgnome libraries
-Summary(pl):	Statyczne biblioteki libgnome
+Summary(pl.UTF-8):   Statyczne biblioteki libgnome
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of libgnome libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna wersja bibliotek libgnome.
 
 %package apidocs
 Summary:	libgnome API documentation
-Summary(pl):	Dokumentacja API libgnome
+Summary(pl.UTF-8):   Dokumentacja API libgnome
 Group:		Documentation
 Requires:	gtk-doc-common
 
 %description apidocs
 libgnome API documentation.
 
-%description apidocs -l pl
+%description apidocs -l pl.UTF-8
 Dokumentacja API libgnome.
 
 %prep
