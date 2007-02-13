@@ -1,5 +1,5 @@
 Summary:	GNOME base library
-Summary(pl.UTF-8):   Podstawowa biblioteka GNOME
+Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.16.0
 Release:	2
@@ -44,7 +44,7 @@ Pakiet libgnomeui zawiera biblioteki GNOME zależne od X11.
 
 %package devel
 Summary:	Headers for libgnome
-Summary(pl.UTF-8):   Pliki nagłówkowe libgnome
+Summary(pl.UTF-8):	Pliki nagłówkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	GConf2-devel >= 2.14.0
@@ -65,7 +65,7 @@ libgnome.
 
 %package static
 Summary:	Static libgnome libraries
-Summary(pl.UTF-8):   Statyczne biblioteki libgnome
+Summary(pl.UTF-8):	Statyczne biblioteki libgnome
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -77,7 +77,7 @@ Statyczna wersja bibliotek libgnome.
 
 %package apidocs
 Summary:	libgnome API documentation
-Summary(pl.UTF-8):   Dokumentacja API libgnome
+Summary(pl.UTF-8):	Dokumentacja API libgnome
 Group:		Documentation
 Requires:	gtk-doc-common
 
