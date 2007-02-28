@@ -1,30 +1,31 @@
 Summary:	GNOME base library
-Summary(pl):	Podstawowa biblioteka GNOME
+Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.15.1
+Version:	2.17.92
 Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.15/%{name}-%{version}.tar.bz2
-# Source0-md5:	0f7c63d3cff2832758bd27339c1a9e5e
+Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.17/%{name}-%{version}.tar.bz2
+# Source0-md5:	cf6bc8ab3068c19f3c043f2ea1de1674
+Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.14.0
+BuildRequires:	GConf2-devel >= 2.16.1
 BuildRequires:	audiofile-devel >= 1:0.2.3
 BuildRequires:	autoconf >= 2.54
-BuildRequires:	automake
-BuildRequires:	esound-devel >= 1:0.2.35
+BuildRequires:	automake >= 1:1.9
+BuildRequires:	esound-devel >= 1:0.2.37
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-vfs2-devel >= 2.15.3
-BuildRequires:	gtk-doc >= 1.6
-BuildRequires:	intltool >= 0.35.0
-BuildRequires:	libbonobo-devel >= 2.15.0
+BuildRequires:	gnome-common >= 2.12.0
+BuildRequires:	gnome-vfs2-devel >= 2.17.91
+BuildRequires:	gtk-doc >= 1.8
+BuildRequires:	intltool >= 0.35.5
+BuildRequires:	libbonobo-devel >= 2.17.92
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
-BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpmbuild(macros) >= 1.197
-Requires(post,preun):	GConf2 >= 2.14.0
-Requires:	gnome-vfs2-libs >= 2.15.3
+Requires(post,preun):	GConf2 >= 2.16.1
+Requires:	gnome-vfs2-libs >= 2.17.91
 Obsoletes:	gnome-objc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,24 +36,22 @@ window manager for the X Window System. The libgnome package includes
 non-GUI-related libraries that are needed to run GNOME. The libgnomeui
 package contains X11-dependent GNOME library features.
 
-%description -l pl
+%description -l pl.UTF-8
 GNOME (GNU Network Object Model Environment) jest przyjaznym dla
-u¿ytkownika zbiorem aplikacji i narzêdzi do u¿ywania w po³±czeniu z
-zarz±dc± okien pod X Window System. Pakiet libgnome zawiera biblioteki
-nie zwi±zane z graficznym interfejsem potrzebne do uruchomienia GNOME.
-Pakiet libgnomeui zawiera biblioteki GNOME zale¿ne od X11.
+uÅ¼ytkownika zbiorem aplikacji i narzÄ™dzi do uÅ¼ywania w poÅ‚Ä…czeniu z
+zarzÄ…dcÄ… okien pod X Window System. Pakiet libgnome zawiera biblioteki
+nie zwiÄ…zane z graficznym interfejsem potrzebne do uruchomienia GNOME.
+Pakiet libgnomeui zawiera biblioteki GNOME zaleÅ¼ne od X11.
 
 %package devel
 Summary:	Headers for libgnome
-Summary(pl):	Pliki nag³ówkowe libgnome
+Summary(pl.UTF-8):	Pliki nagÅ‚Ã³wkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	GConf2-devel >= 2.14.0
+Requires:	GConf2-devel >= 2.16.1
 Requires:	audiofile-devel >= 1:0.2.3
-Requires:	esound-devel >= 1:0.2.35
-Requires:	gnome-vfs2-devel >= 2.15.3
-Requires:	gtk-doc-common
-Requires:	popt-devel >= 1.5
+Requires:	esound-devel >= 1:0.2.37
+Requires:	gnome-vfs2-devel >= 2.17.91
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -61,24 +60,37 @@ window manager for the X Window System. The libgnome-devel package
 includes the libraries and include files that you will need to use
 libgnome.
 
-%description devel -l pl
-Pliki nag³ówkowe potrzebne do kompilowania programów korzystaj±cych z
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe potrzebne do kompilowania programÃ³w korzystajÄ…cych z
 libgnome.
 
 %package static
 Summary:	Static libgnome libraries
-Summary(pl):	Statyczne biblioteki libgnome
+Summary(pl.UTF-8):	Statyczne biblioteki libgnome
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of libgnome libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna wersja bibliotek libgnome.
+
+%package apidocs
+Summary:	libgnome API documentation
+Summary(pl.UTF-8):	Dokumentacja API libgnome
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+libgnome API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API libgnome.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # to be removed (?)
@@ -91,7 +103,6 @@ Statyczna wersja bibliotek libgnome.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
@@ -117,6 +128,8 @@ rm -rf $RPM_BUILD_ROOT
 /sbin/ldconfig
 %gconf_schema_install desktop_gnome_accessibility_keyboard.schemas
 %gconf_schema_install desktop_gnome_accessibility_startup.schemas
+%gconf_schema_install desktop_gnome_applications_at_mobility.schemas
+%gconf_schema_install desktop_gnome_applications_at_visual.schemas
 %gconf_schema_install desktop_gnome_applications_browser.schemas
 %gconf_schema_install desktop_gnome_applications_help_viewer.schemas
 %gconf_schema_install desktop_gnome_applications_terminal.schemas
@@ -134,6 +147,8 @@ rm -rf $RPM_BUILD_ROOT
 %preun
 %gconf_schema_uninstall desktop_gnome_accessibility_keyboard.schemas
 %gconf_schema_uninstall desktop_gnome_accessibility_startup.schemas
+%gconf_schema_uninstall desktop_gnome_applications_at_mobility.schemas
+%gconf_schema_uninstall desktop_gnome_applications_at_visual.schemas
 %gconf_schema_uninstall desktop_gnome_applications_browser.schemas
 %gconf_schema_uninstall desktop_gnome_applications_help_viewer.schemas
 %gconf_schema_uninstall desktop_gnome_applications_terminal.schemas
@@ -152,7 +167,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog MAINTAINERS NEWS README
 %attr(755,root,root) %{_bindir}/gnome-open
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
@@ -160,6 +175,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man7/gnome-options*
 %{_sysconfdir}/gconf/schemas/desktop_gnome_accessibility_keyboard.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_accessibility_startup.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_applications_at_mobility.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_applications_at_visual.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_applications_browser.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_applications_help_viewer.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_applications_terminal.schemas
@@ -177,7 +194,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_gtkdocdir}/%{name}
 %{_includedir}/libgnome-2.0
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
@@ -186,3 +202,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/%{name}
