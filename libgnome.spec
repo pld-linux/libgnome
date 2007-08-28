@@ -1,31 +1,31 @@
 Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.18.0
+Version:	2.19.1
 Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	73426589d7c6fa3266fe4e8f3be2f5b5
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.19/%{name}-%{version}.tar.bz2
+# Source0-md5:	01524cf242063759f4abd0800bf776f2
 Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.18.0.1
+BuildRequires:	GConf2-devel >= 2.19.1
 BuildRequires:	audiofile-devel >= 1:0.2.3
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	esound-devel >= 1:0.2.37
+BuildRequires:	esound-devel >= 1:0.2.38
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gnome-vfs2-devel >= 2.17.91
+BuildRequires:	gnome-common >= 2.18.0
+BuildRequires:	gnome-vfs2-devel >= 2.19.91
 BuildRequires:	gtk-doc >= 1.8
-BuildRequires:	intltool >= 0.35.5
-BuildRequires:	libbonobo-devel >= 2.17.92
+BuildRequires:	intltool >= 0.36.1
+BuildRequires:	libbonobo-devel >= 2.19.6
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2
-Requires:	gnome-vfs2-libs >= 2.17.91
+Requires:	gnome-vfs2-libs >= 2.19.91
 Obsoletes:	gnome-objc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -48,10 +48,10 @@ Summary:	Headers for libgnome
 Summary(pl.UTF-8):	Pliki nagłówkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	GConf2-devel >= 2.18.0.1
+Requires:	GConf2-devel >= 2.19.1
 Requires:	audiofile-devel >= 1:0.2.3
-Requires:	esound-devel >= 1:0.2.37
-Requires:	gnome-vfs2-devel >= 2.17.91
+Requires:	esound-devel >= 1:0.2.38
+Requires:	gnome-vfs2-devel >= 2.19.91
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
