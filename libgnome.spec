@@ -171,6 +171,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-open
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
+%dir %{_datadir}/gnome-background-properties
+%{_datadir}/gnome-background-properties/gnome-default.xml
+%dir %{_pixmapsdir}/backgrounds
+%dir %{_pixmapsdir}/backgrounds/gnome
+%{_pixmapsdir}/backgrounds/gnome/background-default.jpg
 %{_libdir}/bonobo/servers/*
 %{_mandir}/man7/gnome-options*
 %{_sysconfdir}/gconf/schemas/desktop_gnome_accessibility_keyboard.schemas
