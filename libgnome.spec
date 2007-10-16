@@ -1,22 +1,22 @@
 Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.20.0
+Version:	2.20.1
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	a52049befc0e8d91ff6c735d45552d78
+# Source0-md5:	a0caaea31657f5595473c9ebac7268db
 Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.19.1
+BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	audiofile-devel >= 1:0.2.3
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	esound-devel >= 1:0.2.38
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-common >= 2.18.0
-BuildRequires:	gnome-vfs2-devel >= 2.19.91
+BuildRequires:	gnome-common >= 2.20.0
+BuildRequires:	gnome-vfs2-devel >= 2.20.0
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.36.1
 BuildRequires:	libbonobo-devel >= 2.20.0
@@ -25,7 +25,7 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2
-Requires:	gnome-vfs2-libs >= 2.19.91
+Requires:	gnome-vfs2-libs >= 2.20.0
 Obsoletes:	gnome-objc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -48,10 +48,10 @@ Summary:	Headers for libgnome
 Summary(pl.UTF-8):	Pliki nagłówkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	GConf2-devel >= 2.19.1
+Requires:	GConf2-devel >= 2.20.0
 Requires:	audiofile-devel >= 1:0.2.3
 Requires:	esound-devel >= 1:0.2.38
-Requires:	gnome-vfs2-devel >= 2.19.91
+Requires:	gnome-vfs2-devel >= 2.20.0
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -134,9 +134,9 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install desktop_gnome_applications_help_viewer.schemas
 %gconf_schema_install desktop_gnome_applications_terminal.schemas
 %gconf_schema_install desktop_gnome_applications_window_manager.schemas
-%gconf_schema_install desktop_gnome_background.schemas
+%gconf_schema_install desktop_gnome_background.schemas.in
 %gconf_schema_install desktop_gnome_file_views.schemas
-%gconf_schema_install desktop_gnome_interface.schemas
+%gconf_schema_install desktop_gnome_interface.schemas.in
 %gconf_schema_install desktop_gnome_lockdown.schemas
 %gconf_schema_install desktop_gnome_peripherals_keyboard.schemas
 %gconf_schema_install desktop_gnome_peripherals_mouse.schemas
@@ -153,9 +153,9 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_uninstall desktop_gnome_applications_help_viewer.schemas
 %gconf_schema_uninstall desktop_gnome_applications_terminal.schemas
 %gconf_schema_uninstall desktop_gnome_applications_window_manager.schemas
-%gconf_schema_uninstall desktop_gnome_background.schemas
+%gconf_schema_uninstall desktop_gnome_background.schemas.in
 %gconf_schema_uninstall desktop_gnome_file_views.schemas
-%gconf_schema_uninstall desktop_gnome_interface.schemas
+%gconf_schema_uninstall desktop_gnome_interface.schemas.in
 %gconf_schema_uninstall desktop_gnome_lockdown.schemas
 %gconf_schema_uninstall desktop_gnome_peripherals_keyboard.schemas
 %gconf_schema_uninstall desktop_gnome_peripherals_mouse.schemas
@@ -186,9 +186,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/desktop_gnome_applications_help_viewer.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_applications_terminal.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_applications_window_manager.schemas
-%{_sysconfdir}/gconf/schemas/desktop_gnome_background.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_background.schemas.in
 %{_sysconfdir}/gconf/schemas/desktop_gnome_file_views.schemas
-%{_sysconfdir}/gconf/schemas/desktop_gnome_interface.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_interface.schemas.in
 %{_sysconfdir}/gconf/schemas/desktop_gnome_lockdown.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_peripherals_keyboard.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_peripherals_mouse.schemas
