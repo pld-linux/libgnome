@@ -1,12 +1,12 @@
 Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.20.1
+Version:	2.20.1.1
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	a0caaea31657f5595473c9ebac7268db
+# Source0-md5:	cfab025a8b9a19cdae1c64f8b005c513
 Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.20.0
@@ -134,9 +134,9 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install desktop_gnome_applications_help_viewer.schemas
 %gconf_schema_install desktop_gnome_applications_terminal.schemas
 %gconf_schema_install desktop_gnome_applications_window_manager.schemas
-%gconf_schema_install desktop_gnome_background.schemas.in
+%gconf_schema_install desktop_gnome_background.schemas
 %gconf_schema_install desktop_gnome_file_views.schemas
-%gconf_schema_install desktop_gnome_interface.schemas.in
+%gconf_schema_install desktop_gnome_interface.schemas
 %gconf_schema_install desktop_gnome_lockdown.schemas
 %gconf_schema_install desktop_gnome_peripherals_keyboard.schemas
 %gconf_schema_install desktop_gnome_peripherals_mouse.schemas
@@ -153,9 +153,9 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_uninstall desktop_gnome_applications_help_viewer.schemas
 %gconf_schema_uninstall desktop_gnome_applications_terminal.schemas
 %gconf_schema_uninstall desktop_gnome_applications_window_manager.schemas
-%gconf_schema_uninstall desktop_gnome_background.schemas.in
+%gconf_schema_uninstall desktop_gnome_background.schemas
 %gconf_schema_uninstall desktop_gnome_file_views.schemas
-%gconf_schema_uninstall desktop_gnome_interface.schemas.in
+%gconf_schema_uninstall desktop_gnome_interface.schemas
 %gconf_schema_uninstall desktop_gnome_lockdown.schemas
 %gconf_schema_uninstall desktop_gnome_peripherals_keyboard.schemas
 %gconf_schema_uninstall desktop_gnome_peripherals_mouse.schemas
@@ -186,9 +186,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/desktop_gnome_applications_help_viewer.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_applications_terminal.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_applications_window_manager.schemas
-%{_sysconfdir}/gconf/schemas/desktop_gnome_background.schemas.in
+%{_sysconfdir}/gconf/schemas/desktop_gnome_background.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_file_views.schemas
-%{_sysconfdir}/gconf/schemas/desktop_gnome_interface.schemas.in
+%{_sysconfdir}/gconf/schemas/desktop_gnome_interface.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_lockdown.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_peripherals_keyboard.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_peripherals_mouse.schemas
