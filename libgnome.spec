@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.20.1.1
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.20/%{name}-%{version}.tar.bz2
@@ -203,7 +203,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libgnome-2.so
 %{_libdir}/libgnome-2.la
 %{_includedir}/libgnome-2.0
-%{_pkgconfigdir}/gnome-2.0.pc
+%{_pkgconfigdir}/libgnome-2.0.pc
 
 %files static
 %defattr(644,root,root,755)
