@@ -2,8 +2,8 @@ Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.20.1.1
-Release:	1
-License:	LGPL
+Release:	2
+License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.20/%{name}-%{version}.tar.bz2
 # Source0-md5:	cfab025a8b9a19cdae1c64f8b005c513
@@ -169,14 +169,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
 %attr(755,root,root) %{_bindir}/gnome-open
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libgnome-2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgnome-2.so.0
 %attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
+%{_libdir}/bonobo/servers/*
 %dir %{_datadir}/gnome-background-properties
 %{_datadir}/gnome-background-properties/gnome-default.xml
 %dir %{_pixmapsdir}/backgrounds
 %dir %{_pixmapsdir}/backgrounds/gnome
 %{_pixmapsdir}/backgrounds/gnome/background-default.jpg
-%{_libdir}/bonobo/servers/*
 %{_mandir}/man7/gnome-options*
 %{_sysconfdir}/gconf/schemas/desktop_gnome_accessibility_keyboard.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_accessibility_startup.schemas
@@ -199,14 +200,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libgnome-2.so
+%{_libdir}/libgnome-2.la
 %{_includedir}/libgnome-2.0
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/gnome-2.0.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libgnome-2.a
 
 %files apidocs
 %defattr(644,root,root,755)
