@@ -1,12 +1,12 @@
 Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.22.0
+Version:	2.23.3
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.22/%{name}-%{version}.tar.bz2
-# Source0-md5:	52db42762589826c66d27def66112807
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.23/%{name}-%{version}.tar.bz2
+# Source0-md5:	c0c57f22be223e06258accf510d1b349
 Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.22.0
@@ -143,6 +143,7 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install desktop_gnome_peripherals_keyboard.schemas
 %gconf_schema_install desktop_gnome_peripherals_mouse.schemas
 %gconf_schema_install desktop_gnome_sound.schemas
+%gconf_schema_install desktop_gnome_thumbnail_cache.schemas
 %gconf_schema_install desktop_gnome_thumbnailers.schemas
 %gconf_schema_install desktop_gnome_typing_break.schemas
 
@@ -162,6 +163,7 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_uninstall desktop_gnome_peripherals_keyboard.schemas
 %gconf_schema_uninstall desktop_gnome_peripherals_mouse.schemas
 %gconf_schema_uninstall desktop_gnome_sound.schemas
+%gconf_schema_uninstall desktop_gnome_thumbnail_cache.schemas
 %gconf_schema_uninstall desktop_gnome_thumbnailers.schemas
 %gconf_schema_uninstall desktop_gnome_typing_break.schemas
 
@@ -196,6 +198,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/desktop_gnome_peripherals_keyboard.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_peripherals_mouse.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_sound.schemas
+%{_sysconfdir}/gconf/schemas/desktop_gnome_thumbnail_cache.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_thumbnailers.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_typing_break.schemas
 %{_sysconfdir}/sound
