@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.14.1
-Release:	3
+Release:	4
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnome/2.14/%{name}-%{version}.tar.bz2
