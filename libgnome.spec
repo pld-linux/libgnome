@@ -6,7 +6,7 @@ Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.24/%{name}-%{version}.tar.bz2
-# Source0-md5:	1177df4652cfc72b48d3a07f856e90a3
+# Source0-md5:	3b2a30329898b37b2461b3aa886e5ad9
 Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.24.0
