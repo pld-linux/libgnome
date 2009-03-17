@@ -1,6 +1,6 @@
-diff -ur libgnome-2.14.1/libgnome/gnome-config.c libgnome-2.14.1.fix/libgnome/gnome-config.c
---- libgnome-2.14.1/libgnome/gnome-config.c	2006-01-06 10:07:04.000000000 +0100
-+++ libgnome-2.14.1.fix/libgnome/gnome-config.c	2006-05-23 18:56:30.000000000 +0200
+diff -urN libgnome-2.26.0/libgnome/gnome-config.c libgnome-2.26.0.new/libgnome/gnome-config.c
+--- libgnome-2.26.0/libgnome/gnome-config.c	2009-03-17 15:42:06.000000000 +0100
++++ libgnome-2.26.0.new/libgnome/gnome-config.c	2009-03-17 22:18:06.000000000 +0100
 @@ -46,7 +46,6 @@
  #endif
  
@@ -27,7 +27,7 @@ diff -ur libgnome-2.14.1/libgnome/gnome-config.c libgnome-2.14.1.fix/libgnome/gn
  		if (c == '\r')		/* Ignore Carriage Return */
 @@ -326,13 +325,12 @@
  		switch (state){
- 			
+ 
  		case OnSecHeader:
 -			if (c == ']' || overflow){
 -				*next = '\0';
@@ -61,7 +61,7 @@ diff -ur libgnome-2.14.1/libgnome/gnome-config.c libgnome-2.14.1.fix/libgnome/gn
  				break;
  			}
  			/* On first pass, don't allow dangling keys */
-@@ -375,47 +373,45 @@
+@@ -375,45 +373,43 @@
  			if ((c == ' ' && state != KeyDefOnKey) || c == '\t')
  				break;
  
@@ -102,8 +102,6 @@ diff -ur libgnome-2.14.1/libgnome/gnome-config.c libgnome-2.14.1.fix/libgnome/gn
  				state = c == '\n' ? KeyDef : IgnoreToEOL;
 -				next = CharBuffer;
 +				CharBuffer = g_string_truncate(CharBuffer, 0);
- #ifdef GNOME_ENABLE_DEBUG
- #endif
  			} else
 -				*next++ = c;
 +				CharBuffer = g_string_append_c(CharBuffer, c);
