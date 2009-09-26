@@ -1,12 +1,12 @@
 Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.26.0
-Release:	2
+Version:	2.28.0
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.26/%{name}-%{version}.tar.bz2
-# Source0-md5:	a5634fe9ddc54bbb726cbaaa35abc0b9
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.28/%{name}-%{version}.tar.bz2
+# Source0-md5:	5c7efe21dc28c137aa766a77a84c0c29
 Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.24.0
@@ -24,6 +24,7 @@ BuildRequires:	libbonobo-devel >= 2.24.0
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
+BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2
 Requires:	gnome-vfs2-libs >= 2.24.0
