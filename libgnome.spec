@@ -13,6 +13,7 @@ BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	audiofile-devel >= 1:0.2.3
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.9
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	esound-devel >= 1:0.2.38
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.18.0
