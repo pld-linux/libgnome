@@ -96,6 +96,9 @@ Dokumentacja API libgnome.
 %setup -q
 %patch0 -p1
 
+%{__sed} -i -e 's/^en@shaw//' po/LINGUAS
+rm -f po/en@shaw.po
+
 %build
 %{__gtkdocize}
 %{__glib_gettextize}
