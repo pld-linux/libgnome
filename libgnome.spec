@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.30.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.30/%{name}-%{version}.tar.bz2
@@ -10,11 +10,9 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.30/%{name}-%{version}
 Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.24.0
-BuildRequires:	audiofile-devel >= 1:0.2.3
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	esound-devel >= 1:0.2.38
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.18.0
 BuildRequires:	gnome-common >= 2.20.0
@@ -52,8 +50,6 @@ Summary(pl.UTF-8):	Pliki nagłówkowe libgnome
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	GConf2-devel >= 2.24.0
-Requires:	audiofile-devel >= 1:0.2.3
-Requires:	esound-devel >= 1:0.2.38
 Requires:	gnome-vfs2-devel >= 2.24.0
 Requires:	libbonobo-devel >= 2.24.0
 
@@ -110,6 +106,7 @@ rm -f po/en@shaw.po
 %{__automake}
 %configure \
 	--enable-gtk-doc \
+	--disable-esd \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
