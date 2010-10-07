@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.32.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.32/%{name}-%{version}.tar.bz2
@@ -27,6 +27,7 @@ BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2
 Requires:	gnome-vfs2-libs >= 2.24.0
+Suggests:	gnome-vfs2
 Obsoletes:	gnome-objc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
