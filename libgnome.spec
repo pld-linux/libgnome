@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.32.0
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.32/%{name}-%{version}.tar.bz2
@@ -26,7 +26,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2
-Requires:	gnome-vfs2-libs >= 2.24.0
+Requires:	%{name}-libs = %{version}-%{release}
 Suggests:	gnome-vfs2
 Obsoletes:	gnome-objc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -44,6 +44,19 @@ użytkownika zbiorem aplikacji i narzędzi do używania w połączeniu z
 zarządcą okien pod X Window System. Pakiet libgnome zawiera biblioteki
 nie związane z graficznym interfejsem potrzebne do uruchomienia GNOME.
 Pakiet libgnomeui zawiera biblioteki GNOME zależne od X11.
+
+%package libs
+Summary:	libgnome library itself
+Summary(pl.UTF-8):	Sama biblioteka libgnome
+Group:		Libraries
+Requires(post,postun):	/sbin/ldconfig
+Requires:	gnome-vfs2-libs >= 2.24.0
+
+%description libs
+libgnome library itself.
+
+%description libs -l pl.UTF-8
+Sama biblioteka libgnome.
 
 %package devel
 Summary:	Headers for libgnome
@@ -128,7 +141,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.{la,a}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/ldconfig
 %gconf_schema_install desktop_gnome_accessibility_keyboard.schemas
 %gconf_schema_install desktop_gnome_accessibility_startup.schemas
 %gconf_schema_install desktop_gnome_applications_at_mobility.schemas
@@ -168,16 +180,13 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_uninstall desktop_gnome_thumbnailers.schemas
 %gconf_schema_uninstall desktop_gnome_typing_break.schemas
 
-%postun -p /sbin/ldconfig
+%post libs -p /sbin/ldconfig
+%postun libs -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
 %attr(755,root,root) %{_bindir}/gnome-open
-%attr(755,root,root) %{_libdir}/libgnome-2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgnome-2.so.0
-%attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
-%{_libdir}/bonobo/servers/*
 %dir %{_datadir}/gnome-background-properties
 %{_datadir}/gnome-background-properties/gnome-default.xml
 %dir %{_pixmapsdir}/backgrounds
@@ -203,6 +212,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/desktop_gnome_thumbnailers.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_typing_break.schemas
 %{_sysconfdir}/sound
+
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libgnome-2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgnome-2.so.0
+%attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
+%{_libdir}/bonobo/servers/*
 
 %files devel
 %defattr(644,root,root,755)
