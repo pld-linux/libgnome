@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.32.0
-Release:	3
+Release:	4
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.32/%{name}-%{version}.tar.bz2
@@ -51,6 +51,7 @@ Summary(pl.UTF-8):	Sama biblioteka libgnome
 Group:		Libraries
 Requires(post,postun):	/sbin/ldconfig
 Requires:	gnome-vfs2-libs >= 2.24.0
+Conflicts:	libgnome < 2.32.0-3
 
 %description libs
 libgnome library itself.
