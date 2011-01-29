@@ -20,6 +20,7 @@ BuildRequires:	gnome-vfs2-devel >= 2.24.0
 BuildRequires:	gtk-doc >= 1.8
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libbonobo-devel >= 2.24.0
+BuildRequires:	libcanberra-devel
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
