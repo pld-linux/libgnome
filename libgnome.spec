@@ -1,12 +1,12 @@
 Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
-Version:	2.32.0
-Release:	5
+Version:	2.32.1
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.32/%{name}-%{version}.tar.bz2
-# Source0-md5:	b27a0c61918fad8492d84b407a72bd7c
+# Source0-md5:	a4345e6087ae6195d65a4674ffdca559
 Patch0:		%{name}-load-config.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.24.0
@@ -136,7 +136,8 @@ export _POSIX2_VERSION=199209
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 # no static modules and *.la for bonobo modules
-rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.{la,a}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.{la,a}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -226,7 +227,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-2.so
-%{_libdir}/libgnome-2.la
 %{_includedir}/libgnome-2.0
 %{_pkgconfigdir}/libgnome-2.0.pc
 
