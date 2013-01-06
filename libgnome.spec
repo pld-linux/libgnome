@@ -2,7 +2,7 @@ Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.32.1
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.32/%{name}-%{version}.tar.bz2
@@ -47,18 +47,17 @@ nie związane z graficznym interfejsem potrzebne do uruchomienia GNOME.
 Pakiet libgnomeui zawiera biblioteki GNOME zależne od X11.
 
 %package libs
-Summary:	libgnome library itself
-Summary(pl.UTF-8):	Sama biblioteka libgnome
+Summary:	Base libgnome library and bonobo modules
+Summary(pl.UTF-8):	Podstawowa biblioteka libgnome oraz moduły bonobo
 Group:		Libraries
-Requires(post,postun):	/sbin/ldconfig
 Requires:	gnome-vfs2-libs >= 2.24.0
 Conflicts:	libgnome < 2.32.0-3
 
 %description libs
-libgnome library itself.
+Base libgnome library and bonobo modules.
 
 %description libs -l pl.UTF-8
-Sama biblioteka libgnome.
+Podstawowa biblioteka libgnome oraz moduły bonobo.
 
 %package devel
 Summary:	Headers for libgnome
@@ -109,9 +108,6 @@ Dokumentacja API libgnome.
 %setup -q
 %patch0 -p1
 
-%{__sed} -i -e 's/^en@shaw//' po/LINGUAS
-rm -f po/en@shaw.po
-
 %build
 %{__gtkdocize}
 %{__glib_gettextize}
@@ -138,6 +134,8 @@ export _POSIX2_VERSION=199209
 # no static modules and *.la for bonobo modules
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.{la,a}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
+%{__mv} $RPM_BUILD_ROOT%{_datadir}/locale/{sr@ije,sr@ijekavian}
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -184,8 +182,8 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_uninstall desktop_gnome_thumbnailers.schemas
 %gconf_schema_uninstall desktop_gnome_typing_break.schemas
 
-%post libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
@@ -221,8 +219,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgnome-2.so.0
-%attr(755,root,root) %{_libdir}/bonobo/monikers/*.so
-%{_libdir}/bonobo/servers/*
+%attr(755,root,root) %{_libdir}/bonobo/monikers/libmoniker_extra_2.so
+%{_libdir}/bonobo/servers/GNOME_Moniker_std.server
 
 %files devel
 %defattr(644,root,root,755)
