@@ -75,7 +75,7 @@ Podstawowa biblioteka libgnome oraz moduły bonobo.
 Summary:	Headers for libgnome
 Summary(pl.UTF-8):	Pliki nagłówkowe libgnome
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-libs = %{version}-%{release}
 Requires:	GConf2-devel >= 2.24.0
 Requires:	gnome-vfs2-devel >= 2.24.0
 Requires:	libbonobo-devel >= 2.24.0
@@ -83,11 +83,8 @@ Requires:	libcanberra-devel
 Requires:	popt-devel >= 1.5
 
 %description devel
-GNOME (GNU Network Object Model Environment) is a user-friendly set of
-GUI applications and desktop tools to be used in conjunction with a
-window manager for the X Window System. The libgnome-devel package
-includes the libraries and include files that you will need to use
-libgnome.
+This package includes the header files for libgnome applications
+development.
 
 %description devel -l pl.UTF-8
 Pliki nagłówkowe potrzebne do kompilowania programów korzystających z
