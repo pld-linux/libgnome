@@ -1,3 +1,8 @@
+#
+# Conditional build:
+%bcond_with	esd		# EsounD support (obsolete)
+%bcond_without	static_libs	# static library
+#
 Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
@@ -10,10 +15,12 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.32/%{name}-%{version}
 Patch0:		%{name}-load-config.patch
 Patch1:		%{name}-glib.patch
 URL:		http://www.gnome.org/
+%{?with_esd:BuildRequires:	audiofile-devel >= 0.2.3}
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	docbook-dtd412-xml
+%{?with_esd:BuildRequires:	esound-devel >= 0.2.26}
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.18.0
 BuildRequires:	gnome-common >= 2.20.0
@@ -25,10 +32,11 @@ BuildRequires:	libcanberra-devel
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
-BuildRequires:	popt-devel
+BuildRequires:	popt-devel >= 1.5
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	libbonobo >= 2.24.0
 Suggests:	gnome-vfs2
 Obsoletes:	gnome-objc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -51,7 +59,10 @@ Pakiet libgnomeui zawiera biblioteki GNOME zależne od X11.
 Summary:	Base libgnome library and bonobo modules
 Summary(pl.UTF-8):	Podstawowa biblioteka libgnome oraz moduły bonobo
 Group:		Libraries
+Requires:	GConf2-libs >= 2.24.0
 Requires:	gnome-vfs2-libs >= 2.24.0
+Requires:	libbonobo-libs >= 2.24.0
+Requires:	popt >= 1.5
 Conflicts:	libgnome < 2.32.0-3
 
 %description libs
@@ -69,6 +80,7 @@ Requires:	GConf2-devel >= 2.24.0
 Requires:	gnome-vfs2-devel >= 2.24.0
 Requires:	libbonobo-devel >= 2.24.0
 Requires:	libcanberra-devel
+Requires:	popt-devel >= 1.5
 
 %description devel
 GNOME (GNU Network Object Model Environment) is a user-friendly set of
@@ -120,26 +132,31 @@ Dokumentacja API libgnome.
 %{__autoheader}
 %{__automake}
 %configure \
+	%{?with_esd:--enable-esd} \
 	--enable-gtk-doc \
-	--disable-esd \
+	--disable-schemas-install \
+	--disable-silent-rules \
+	%{!?with_static_libs:--disable-static} \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-export _POSIX2_VERSION=199209
+
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	HTML_DIR=%{_gtkdocdir} \
-	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+	DESTDIR=$RPM_BUILD_ROOT
 
 # no static modules and *.la for bonobo modules
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.{la,a}
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+# libraries .la obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la \
+	$RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.la
+%if %{with static_libs}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.a
+%endif
 
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/locale/{sr@ije,sr@ijekavian}
 
-%find_lang %{name} --with-gnome --all-name
+%find_lang %{name}-2.0
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -187,7 +204,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
 
-%files -f %{name}.lang
+%files -f %{name}-2.0.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
 %attr(755,root,root) %{_bindir}/gnome-open
@@ -215,7 +232,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/desktop_gnome_thumbnail_cache.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_thumbnailers.schemas
 %{_sysconfdir}/gconf/schemas/desktop_gnome_typing_break.schemas
-%{_sysconfdir}/sound
+%dir %{_sysconfdir}/sound
+%dir %{_sysconfdir}/sound/events
+%{_sysconfdir}/sound/events/gtk-events-2.soundlist
+%{_sysconfdir}/sound/events/gnome-2.soundlist
 
 %files libs
 %defattr(644,root,root,755)
@@ -230,9 +250,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libgnome-2.0
 %{_pkgconfigdir}/libgnome-2.0.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libgnome-2.a
+%endif
 
 %files apidocs
 %defattr(644,root,root,755)
