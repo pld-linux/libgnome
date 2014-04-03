@@ -2,12 +2,12 @@
 # Conditional build:
 %bcond_with	esd		# EsounD support (obsolete)
 %bcond_without	static_libs	# static library
-#
+
 Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.32.1
-Release:	3
+Release:	4
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.32/%{name}-%{version}.tar.bz2
@@ -15,8 +15,8 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.32/%{name}-%{version}
 Patch0:		%{name}-load-config.patch
 Patch1:		%{name}-glib.patch
 URL:		http://www.gnome.org/
-%{?with_esd:BuildRequires:	audiofile-devel >= 0.2.3}
 BuildRequires:	GConf2-devel >= 2.24.0
+%{?with_esd:BuildRequires:	audiofile-devel >= 0.2.3}
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	docbook-dtd412-xml
@@ -107,6 +107,9 @@ Summary:	libgnome API documentation
 Summary(pl.UTF-8):	Dokumentacja API libgnome
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 libgnome API documentation.
@@ -151,7 +154,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/bonobo/monikers/*.a
 %endif
 
-%{__mv} $RPM_BUILD_ROOT%{_datadir}/locale/{sr@ije,sr@ijekavian}
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/{sr@ije,sr@ijekavian}
 
 %find_lang %{name}-2.0
 
