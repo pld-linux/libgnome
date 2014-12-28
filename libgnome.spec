@@ -21,7 +21,7 @@ BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	docbook-dtd412-xml
 %{?with_esd:BuildRequires:	esound-devel >= 0.2.26}
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.18.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-vfs2-devel >= 2.24.0
