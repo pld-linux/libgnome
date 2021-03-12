@@ -7,14 +7,14 @@ Summary:	GNOME base library
 Summary(pl.UTF-8):	Podstawowa biblioteka GNOME
 Name:		libgnome
 Version:	2.32.1
-Release:	5
+Release:	6
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnome/2.32/%{name}-%{version}.tar.bz2
+Source0:	https://download.gnome.org/sources/libgnome/2.32/%{name}-%{version}.tar.bz2
 # Source0-md5:	a4345e6087ae6195d65a4674ffdca559
 Patch0:		%{name}-load-config.patch
 Patch1:		%{name}-glib.patch
-URL:		http://www.gnome.org/
+URL:		https://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.24.0
 %{?with_esd:BuildRequires:	audiofile-devel >= 0.2.3}
 BuildRequires:	autoconf >= 2.54
@@ -33,6 +33,7 @@ BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel >= 1.5
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
@@ -61,7 +62,7 @@ Summary(pl.UTF-8):	Podstawowa biblioteka libgnome oraz moduły bonobo
 Group:		Libraries
 Requires:	GConf2-libs >= 2.24.0
 Requires:	gnome-vfs2-libs >= 2.24.0
-Requires:	libbonobo-libs >= 2.24.0
+Requires:	libbonobo >= 2.24.0
 Requires:	popt >= 1.5
 Conflicts:	libgnome < 2.32.0-3
 
@@ -119,6 +120,9 @@ Dokumentacja API libgnome.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+
+# gtk-doc no longer handles legacy encodings; use just ascii space instead of nbsp
+%{__sed} -i -e 's/\xa0/ /' libgnome/gnome-config.h
 
 %build
 %{__gtkdocize}
